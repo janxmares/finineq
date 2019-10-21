@@ -1,0 +1,135 @@
+%!TEX program = xelatex
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amssymb} %better typesetting of mathematical expressions, theorems, additional symbols
+\usepackage{booktabs} %fixltx2e
+\usepackage[flushleft]{threeparttable}
+\usepackage{tabularx}
+% \usepackage[capposition=top]{floatrow}
+\usepackage{caption}
+\captionsetup[measuredfigure]{labelformat=empty}
+% \usepackage{bm}
+% \usepackage{subcaption}
+%\usepackage{epstopdf} % not supported by xelatex
+% \usepackage{fullpage}
+% \usepackage{enumerate}
+\usepackage{authblk}
+\usepackage{fontspec}
+\usepackage{lscape}
+\usepackage[round]{natbib} %standard package for bibliography
+\usepackage{multirow}
+% \usepackage[figuresleft]{rotating}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{colortbl} % color table
+\usepackage{geometry}
+% \usepackage{hyperref} %hyperlink support
+% \hypersetup{pdfstartview={XYZ null null 1.00},bookmarksnumbered, hypertexnames=false, colorlinks=true, linkcolor=BrickRed, citecolor=MidnightBlue, urlcolor=MidnightBlue} % zoom: default screen; numbers for bookmarks
+
+%
+%
+%\usepackage{parskip}
+\usepackage[nolist]{acronym}
+\usepackage{longtable}
+\usepackage{setspace}
+
+\acrodef{bma}[BMA]{Bayesian Model Averaging}
+\acrodef{bic}[BIC]{Bayesian Information Criterion}
+\acrodef{cbf}[CBF]{Conditional Bayes Factor}
+\acrodefplural{cbf}[CBFs]{Conditional Bayes Factors}
+\acrodef{cswd}[CSWD]{Credit Suisse Wealth Databook}
+\acrodef{gfdd}[GFDD]{Global Financial Development Database}
+\acrodef{pip}[PIP]{Posterior Inclusion Probability}
+\acrodefplural{pip}[PIPs]{Posterior Inclusion Probabilities}
+\acrodef{fdi}[FDI]{Foreign Direct Investment}
+\acrodefplural{fdi}[FDIs]{Foreign Direct Investments}
+\acrodef{gdp}[GDP]{Gross Domestic Product}
+\acrodef{uip}[UIP]{Unit Information Prior}
+\acrodef{wb}[WB]{World Bank}
+\acrodef{oecd}[OECD]{Organisation for Co-operation and Development}
+\acrodef{ivbma}[IVBMA]{Instrumental Variable Bayesian Model Averaging}
+\acrodef{wid}[WID]{World Inequality Database}
+\acrodef{hbs}[HBS]{Household Balance Sheet}
+\acrodef{uk}[UK]{United Kingdom}
+\acrodef{us}[US]{United States}
+\acrodef{efw}[EFW]{Economic Freedom of the World}
+\acrodef{pmp}[PMP]{Posterior Model Probability}
+
+%
+%
+
+\setlength\parindent{34pt}
+\onehalfspacing
+\title{Finance and Wealth Inequality\thanks{We thank two anonymous referees, ...}}
+\author[a]{Roman Horvath}
+\author[a]{Jan Mares\footnote{\footnotesize Corresponding author's address: IES FSV UK, Opletalova 26, 110 00, Praha 1; \textbf{e-mail:janxmares@gmail.com}}}
+\affil[a]{Charles University, Prague}
+
+
+%\renewcommand\Authands{ and }
+\date{\today}
+
+\begin{document}
+
+
+\clubpenalty 9999 % no orphants (typographic properties)
+\widowpenalty 9999 % no widows (typographic properties)
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} % shortcut for Stata tables
+
+\maketitle
+
+\thispagestyle{empty}
+\begin{abstract}
+Using a global sample, this paper investigates the determinants of wealth inequality capturing various economic, financial, political, institutional, and geographical indicators. Using instrumental variable Bayesian model averaging, it reveals that only a handful of indicators robustly matters and finance plays a key role. It reports that while financial depth increases wealth inequality, efficiency and access to finance reduce inequality. In addition, redistribution and education are associated with lower inequality whereas wars and openness to international trade contribute to greater wealth inequality.
+\end{abstract}
+
+\bigskip
+
+\begin{tabular}{p{0.25\hsize}p{0.6\hsize}} %0.15
+\textbf{Keywords:} & Income inequality, finance, Bayesian model averaging
+\end{tabular}
+
+\bigskip
+
+\begin{tabular}{p{0.25\hsize}p{0.6\hsize}}
+\textbf{JEL Codes:} & D31, E21\\
+\end{tabular}
+
+\clearpage
+\setcounter{page}{1}
+
+\section{Introduction}
+% \label{sec:intro}
+
+\section{Related literature}
+% \label{sec:literature}
+\citet{pikettyandzucman2014}
+\section{Data}
+% \label{sec:data}
+
+\section{Methodology}
+% \label{sec:meth}
+
+\section{Results}
+% \label{sec:results}
+
+\section{Concluding Remarks}
+% \label{sec:conclusion}
+
+\clearpage
+%
+\bibliographystyle{chicagoa}
+\bibliography{literature}
+%
+\clearpage
+%
+\appendix
+\section{Appendix}
+% \label{sec:app}
+
+\renewcommand{\thesection}{A\arabic{section}}%
+\renewcommand{\thetable}{A\arabic{table}}%
+\renewcommand{\thefigure}{A\arabic{figure}}%
+\renewcommand{\theequation}{A\arabic{eq}} 
+
+\end{document}
