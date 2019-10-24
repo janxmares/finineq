@@ -9,7 +9,7 @@ library(stringr)
 library(countrycode)
 
 # Set the working directory
-wd <- c("c:/Users/JM/Dropbox/Research/Finance and income inequality/")
+wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
 setwd(wd)
 
 # read data

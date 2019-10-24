@@ -12,7 +12,7 @@ library(devtools)
 library(WDI)
 
 # Set the working directory
-wd <- c("c:/Users/JM/Dropbox/Research/Finance and income inequality/")
+wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
 setwd(wd)
 
 # Define governance indicators 

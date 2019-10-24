@@ -6,7 +6,7 @@ library(data.table)
 library(countrycode)
 
 # Set the working directory
-wd <- c("c:/Users/JM/Dropbox/Research/Finance and Income Inequality/")
+wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
 setwd(wd)
 
 data <- data.table(read.csv(file="WID data top income shares.csv", header=T, stringsAsFactors=F))
