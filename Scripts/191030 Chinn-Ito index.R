@@ -16,3 +16,16 @@ chinnito <- data.table(read.dta13("Auxiliary data/kaopen_2017.dta"))
 
 str(chinnito)
 head(chinnito)
+View(chinnito)
+
+#
+#
+
+# filter required columns
+chinnito <- chinnito[, j = .(iso3c = ccode, year, kaopen)]
+
+#
+#
+
+# write into file
+write.csv(chinnito, file = "Auxiliary data/chinnito.csv", row.names = F)

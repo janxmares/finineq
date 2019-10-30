@@ -22,6 +22,7 @@ setwd(wd)
 # NV.IND.TOTL.KD.ZG # 		Value added in industry (% GDP)
 # NV.AGR.TOTL.ZS # 			Value added in agriculture (% GDP)
 # BX.KLT.DINV.WD.GD.Z # 	Foreign direct investment, net inflows (% of GDP)
+# BM.KLT.DINV.WD.GD.ZS #	Foreign direct investment, net outflows (% of GDP)
 # GC.TAX.TOTL.GD.ZS # 		Tax revenue (% of GDP)
 # NY.ADJ.NNAT.GN.ZS # 		Adjusted savings: net national savings (% of GNI)
 # RL.EST #					Rule of Law: Estimate
@@ -30,6 +31,7 @@ setwd(wd)
 # SL.EMP.TOTL.SP.NE.ZS # 	Employment to population ratio, 15+, total (%) (national estimate)
 # SE.XPD.TOTL.GD.ZS # 		Public education expenditures as a share of GDP
 # NY.GDP.PCAP.PP.KD #		GDP per capita, PPP (constant 2011 international $)
+# NE.TRD.GNFS.ZS #          Trade (% of GDP)
 
 #
 #
@@ -51,9 +53,10 @@ setwd(wd)
 # Load data from WB
 wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW",
 			"FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS","NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS",
-			"BX.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS",
+			"BX.KLT.DINV.WD.GD.ZS","BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS",
 			"NY.ADJ.NNAT.GN.ZS","RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS",
-			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD")
+			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD",
+			"NE.TRD.GNFS.ZS")
 
 # Read first dataset to obtain selected country codes
 wbdata <- data.table(WDI(indicator=wbvars, start=1990, end=2017))
@@ -78,12 +81,12 @@ wbdatasub[,iso3c:=countrycode(wbdatasub$iso2c,"iso2c", "iso3c")]
 setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 				      "SP.POP.GROW","FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS",
 				      "NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS","BX.KLT.DINV.WD.GD.ZS",
-				      "GC.TAX.TOTL.GD.ZS","NY.ADJ.NNAT.GN.ZS","RL.EST","SP.DYN.IMRT.IN",
-				      "NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS",
-				      "NY.GDP.PCAP.PP.KD"),
+				      "BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS","NY.ADJ.NNAT.GN.ZS",
+				      "RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS",
+				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NE.TRD.GNFS.ZS"),
 					c("NatRes","GovExp","GDSavings","PopGrowth","Infl","EducExp","VAI",
-					  "VAA","NetFDI","TaxR","NNSavings","RuleofLaw","Mortality","GFCF",
-					  "EmplRate","PubEducExp","GDPpc"))
+					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","Mortality","GFCF",
+					  "EmplRate","PubEducExp","GDPpc","TradeOpenness"))
 
 # Check
 # names(wbdatasub)
