@@ -24,10 +24,10 @@ vec <- unlist(lapply(perc_id, function(x){
 
 
 # Add it to the data
-data[,Type:=vec]
+data[, Type := vec]
 
 # Drop the ID var
-data[,ID:=NULL]
+data[, ID:=NULL]
 
 # Save as csv
 write.csv(data, file="WID data top income shares FINAL.csv", row.names=F)
@@ -37,3 +37,40 @@ data_available <- data[!(is.na(Value)),]
 
 # View(data_available)
 unique(data_available$Country)
+
+#
+#
+
+# read the data from WID
+
+#
+#
+
+data_wid <- data.table(read.csv("WID_Data_29102019.csv", sep = ";", skip = 1, header = F, stringsAsFactors = F))
+
+# Keep required columns
+data_wid <- data_wid[, j = .(Country = V1, Type = V3, year = V4, value = as.numeric(V5))]
+
+data_wid[, iso3c := countrycode(Country, "country.name", "iso3c")]
+
+# keep only non-NA iso codes
+data_wid <- data_wid[!(is.na(iso3c)),]
+
+# check
+nrow(data_wid)
+View(data_wid)
+
+#
+#
+
+unique(data_wid$iso3c)
+
+# examples 
+data_wid[iso3c == "RUS",]
+View(data_wid[iso3c == "RUS",])
+View(data_wid[iso3c == "USA",])
+names(data_wid)
+#
+#
+
+sum(is.na(data_wid$value))

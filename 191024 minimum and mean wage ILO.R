@@ -185,7 +185,7 @@ data_meanwage <- data_meanwage[order(ref_area, year),]
 #
 
 # read the manually adjusted data in excel
-data_mw <- data.table(read.csv(file="ILO_meanwage_final.csv", header = T, stringsAsFactors = T))
+data_mw <- data.table(read.csv(file="Auxiliary data/ILO meanwage final.csv", header = T, stringsAsFactors = T))
 
 #
 #
@@ -197,8 +197,3 @@ data_mw <- data.table(read.csv(file="ILO_meanwage_final.csv", header = T, string
 # data_duplicates <- data_meanwage[dup1 | dup2,]
 # data_duplicates_a <- data_duplicates[order(ref_area,year),]
 # View(data_duplicates_a)
-
-#
-#
-
-View(data_meanwage[ref_area=="CZE",])
