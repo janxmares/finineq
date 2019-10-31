@@ -32,6 +32,9 @@ setwd(wd)
 # SE.XPD.TOTL.GD.ZS # 		Public education expenditures as a share of GDP
 # NY.GDP.PCAP.PP.KD #		GDP per capita, PPP (constant 2011 international $)
 # NE.TRD.GNFS.ZS #          Trade (% of GDP)
+# SP.DYN.LE00.IN # 			Life expectancy at birth
+# TX.VAL.MMTL.ZS.UN #		Ores and metals exports (% of merchandise exports)
+# TX.VAL.FUEL.ZS.UN # 		Fuel exports (% of merchandise exports)
 
 #
 #
@@ -41,7 +44,6 @@ setwd(wd)
 # IC.REG.DURS #				Time required to start a business (days)
 # IC.BUS.NDNS.ZS # 			New business density (new registrations per 1,000 people ages 15-64)
 # IC.REG.COST.PC.ZS # 		Cost of business start-up procedures (% of GNI per capita)
-# SP.DYN.LE00.IN # 			Life expectancy at birth
 # GC.REV.XGRT.GD.ZS # 		Revenue, excluding grants (% of GDP)
 # HD.HCI.HLOS #				Harmonized Test Scores # ONLY AVAILABLE IN 2018	
 # SL.EMP.TOTL.SP.ZS #		Employment to population ratio, 15+, total (%) (modeled ILO estimate)
@@ -56,7 +58,7 @@ wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW",
 			"BX.KLT.DINV.WD.GD.ZS","BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS",
 			"NY.ADJ.NNAT.GN.ZS","RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS",
 			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD",
-			"NE.TRD.GNFS.ZS")
+			"NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN")
 
 # Read first dataset to obtain selected country codes
 wbdata <- data.table(WDI(indicator=wbvars, start=1990, end=2017))
@@ -83,10 +85,12 @@ setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 				      "NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS","BX.KLT.DINV.WD.GD.ZS",
 				      "BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS","NY.ADJ.NNAT.GN.ZS",
 				      "RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS",
-				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NE.TRD.GNFS.ZS"),
+				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NE.TRD.GNFS.ZS",
+				      "SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN"),
 					c("NatRes","GovExp","GDSavings","PopGrowth","Infl","EducExp","VAI",
 					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","Mortality","GFCF",
-					  "EmplRate","PubEducExp","GDPpc","TradeOpenness"))
+					  "EmplRate","PubEducExp","GDPpc","TradeOpen","LifeExp","ExpMetalOre",
+					  "ExpFuel"))
 
 # Check
 # names(wbdatasub)
