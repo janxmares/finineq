@@ -51,6 +51,9 @@ fhwide$PR <- as.numeric(fhwide$PR)
 # Assign iso3c code to observations
 fhwide[,iso3c:=countrycode(fhwide$country,"country.name","iso3c")]
 
+# drop NA iso3c codes - Czechoslovakia, Serbia & Montenegro, Kosovo, Micronesia
+fhwide <- fhwide[!is.na(iso3c), ]
+
 # List missing observations
 # fhwide[is.na(fhwide$CL),]
 
@@ -68,5 +71,8 @@ fh_m <- fhwide[,j=list(CivLib=CL,PolRights=PR), by=c("iso3c","year")]
 fh_m[,CLandPR:=(CivLib+PolRights)/2]
 fh_m[,c("CivLib","PolRights"):=NULL]
 
+# only observations past 1980
+fh_m <- fh_m[year >= 1980, ]
+
 # write into file
-write.csv(fh_m, file = "Auxiliary data/CLandPR.csv", row.names = F)
+write.csv(fh_m, file = "Auxiliary data/to merge/CLandPR.csv", row.names = F)

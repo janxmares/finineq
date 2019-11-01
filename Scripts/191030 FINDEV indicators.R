@@ -33,5 +33,8 @@ findev[FMD == 0, FMD := NA]
 findev[FMA == 0, FMA := NA]
 findev[FME == 0, FME := NA]
 
+# only observations past 1980
+findev <- findev[year >= 1980, ]
+
 # write into file
-write.csv(findev, file = "Auxiliary data/findev.csv", row.names = F)
+write.csv(findev, file = "Auxiliary data/to merge/findev.csv", row.names = F)

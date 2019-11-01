@@ -14,9 +14,9 @@ setwd(wd)
 # Data on Chinn-Ito financial openness index
 chinnito <- data.table(read.dta13("Auxiliary data/kaopen_2017.dta"))
 
-str(chinnito)
-head(chinnito)
-View(chinnito)
+# str(chinnito)
+# head(chinnito)
+# View(chinnito)
 
 #
 #
@@ -24,8 +24,11 @@ View(chinnito)
 # filter required columns
 chinnito <- chinnito[, j = .(iso3c = ccode, year, kaopen)]
 
+# only observations past 1980
+chinnito <- chinnito[year >= 1980, ]
+
 #
 #
 
 # write into file
-write.csv(chinnito, file = "Auxiliary data/chinnito.csv", row.names = F)
+write.csv(chinnito, file = "Auxiliary data/to merge/chinnito.csv", row.names = F)

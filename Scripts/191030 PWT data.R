@@ -51,4 +51,4 @@ investment_f[,NonequipI:=rest_share*csh_i]
 investment_f <- investment_f[, j = .(iso3c, year, EquipI, NonequipI)]
 
 # write into csv
-write.csv(investment_f, file = "Auxiliary data/investment shares detail.csv", row.names = F)
+write.csv(investment_f, file = "Auxiliary data/to merge/investment shares detail.csv", row.names = F)

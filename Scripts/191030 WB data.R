@@ -17,6 +17,7 @@ setwd(wd)
 # NE.CON.GOVT.ZS # 			General government final consumption expenditure (% of GDP)
 # NY.GDS.TOTL.ZS # 			Gross domestic savings (% of GDP)
 # SP.POP.GROW # 			Annual population growth
+# SP.POP.TOTL # 			Population, total
 # FP.CPI.TOTL.ZG # 			Inflation, consumer prices (annual %)
 # NY.ADJ.AEDU.GN.ZS # 		Adjusted savings: education expenditure (% of GNI)
 # NV.IND.TOTL.KD.ZG # 		Value added in industry (% GDP)
@@ -36,6 +37,7 @@ setwd(wd)
 # TX.VAL.MMTL.ZS.UN #		Ores and metals exports (% of merchandise exports)
 # TX.VAL.FUEL.ZS.UN # 		Fuel exports (% of merchandise exports)
 
+
 #
 #
 
@@ -53,15 +55,16 @@ setwd(wd)
 #
 
 # Load data from WB
-wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW",
+wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW","SP.POP.TOTL",
 			"FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS","NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS",
 			"BX.KLT.DINV.WD.GD.ZS","BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS",
 			"NY.ADJ.NNAT.GN.ZS","RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS",
 			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD",
-			"NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN")
+			"NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN",
+			"SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR")
 
 # Read first dataset to obtain selected country codes
-wbdata <- data.table(WDI(indicator=wbvars, start=1990, end=2017))
+wbdata <- data.table(WDI(indicator = wbvars, start = 1980, end = 2017))
 
 # Selection of countries to drop from the analysis
 codedrop <- c("1A","1W","4E","7E","8S","B8","EU","F1","V1","V2","V3","V4","T2","T3","T4","T5","T6","T7",
@@ -77,20 +80,22 @@ selcodes <- unique(wbdata$iso2c[!(wbdata$iso2c %in% codedrop)])
 wbdatasub <- wbdata[iso2c %in% selcodes,]
 
 # Assign iso3c code to the datas
-wbdatasub[,iso3c:=countrycode(wbdatasub$iso2c,"iso2c", "iso3c")]
+wbdatasub[, iso3c := countrycode(wbdatasub$iso2c,"iso2c", "iso3c")]
+wbdatasub[, iso2c := NULL]
 
 # rename the variables
 setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
-				      "SP.POP.GROW","FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS",
+				      "SP.POP.GROW","SP.POP.TOTL","FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS",
 				      "NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS","BX.KLT.DINV.WD.GD.ZS",
 				      "BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS","NY.ADJ.NNAT.GN.ZS",
 				      "RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS",
 				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NE.TRD.GNFS.ZS",
-				      "SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN"),
-					c("NatRes","GovExp","GDSavings","PopGrowth","Infl","EducExp","VAI",
+				      "SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN",
+				      "SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR"),
+					c("NatRes","GovExp","GDSavings","PopGrowth","PopTot","Infl","EducExp","VAI",
 					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","Mortality","GFCF",
 					  "EmplRate","PubEducExp","GDPpc","TradeOpen","LifeExp","ExpMetalOre",
-					  "ExpFuel"))
+					  "ExpFuel","EnrolPri","EnrolSec","EnrolTer"))
 
 # Check
 # names(wbdatasub)
@@ -100,4 +105,4 @@ setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 #
 
 # write data
-write.csv(wbdatasub, file = "Auxiliary data/wb data.csv")
+write.csv(wbdatasub, file = "Auxiliary data/to merge/wb data.csv", row.names = F)

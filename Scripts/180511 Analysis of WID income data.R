@@ -17,26 +17,39 @@ setwd(wd)
 #
 #
 
-data_wid <- data.table(read.csv("WID_Data_29102019.csv", sep = ";", skip = 1, header = F, stringsAsFactors = F))
+data_wid <- data.table(read.csv("Auxiliary data/WID_Data_29102019.csv", sep = ";", skip = 1, header = F, stringsAsFactors = F))
 
 # Keep required columns
-data_wid <- data_wid[, j = .(Country = V1, Type = V3, year = V4, value = as.numeric(V5))]
+data_wid <- data_wid[, j = .(country = V1, type = V3, year = V4, value = as.numeric(V5))]
+
+# remove rows which cause troubles later as they disrupt assign of iso3 codes
+data_wid <- data_wid[!(country %in% c("Rural China","Urban China","Indiana")),]
+
 
 # assign iso3 codes
-data_wid[, iso3c := countrycode(Country, "country.name", "iso3c")]
+data_wid[, iso3c := countrycode(country, "country.name", "iso3c")]
 
 # keep only non-NA iso codes
 data_wid <- data_wid[!(is.na(iso3c)),]
 
+# drop country column
+data_wid[, country := NULL]
+
 # # check
 # nrow(data_wid)
-# View(data_wid)
+# head(data_wid)
+
+# reshape data to wide
+data_wid_w <- data.table(dcast(data_wid, iso3c + year ~ type, value.var = "value"))
+
+# rename value columns
+setnames(data_wid_w, c("p90p100","p99p100"), c("Top10share","Top1share"))
 
 #
 #
 
 # write data
-write.csv(data_wid, file = "Auxiliary data/wid data.csv", row.names = F)
+write.csv(data_wid_w, file = "Auxiliary data/to merge/wid data.csv", row.names = F)
 
 
 # # examples 

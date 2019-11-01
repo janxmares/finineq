@@ -34,4 +34,4 @@ educindex[Country == "Eswatini (Kingdom of)", iso3c := "SWZ"]
 educindex[, Country := NULL]
 
 # write data into file
-write.csv(educindex, file = "Auxiliary data/educindex UN.csv", row.names = F)
+write.csv(educindex, file = "Auxiliary data/to merge/educindex UN.csv", row.names = F)

@@ -67,7 +67,12 @@ warslong$iso3c <- countrycode(warslong$value, "country.name", "iso3c")
 
 # Assign iso3c code to Yemen as it is unavailable
 warslong[value=="Yemen (North Yemen)", iso3c:="YMD"]
+warslong[value=="South Yemen", iso3c:="YMD"]
 
+# drop Hyderabad rows
+warslong <- warslong[!(value %in% c("Hyderabad")),]
+
+# 
 # Sum the conflicts across country-years
 waryears <- warslong[year>=1980, j=.(WarYears=.N), by=c("year","iso3c")]
 
@@ -75,7 +80,7 @@ waryears <- warslong[year>=1980, j=.(WarYears=.N), by=c("year","iso3c")]
 # View(waryears)
 
 # write into file
-write.csv(waryears, file = "Auxiliary data/waryears.csv", row.names = F)
+write.csv(waryears, file = "Auxiliary data/to merge/waryears.csv", row.names = F)
 
 # Bookkeeping
 rm(list=c("wbwars"))

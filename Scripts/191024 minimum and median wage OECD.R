@@ -30,7 +30,7 @@ head(oecd_wage_dt)
 oecd_wratio_wide <- data.table(dcast(oecd_wage_dt, COUNTRY + obsTime ~ SERIES, value.var = "obsValue"))
 
 # rename columns
-setnames(oecd_wratio_wide, c("iso3c","year","wage_min_mean","wage_min_median"))
+setnames(oecd_wratio_wide, c("iso3c","year","wage.mintomean.OECD","wage.mintomedian.OECD"))
 
 #
 #
@@ -46,7 +46,7 @@ oecd_wage_dt <- as.data.table(oecd_wage)
 # unique(oecd_wage_dt$SERIES) # CPNCU - current prices NCU, CNPNCU - constant prices NCU
 oecd_wage_dt <- oecd_wage_dt[SERIES == "USDPPP",]
 
-oecd_meanw <- oecd_wage_dt[, j = .(iso3c = COUNTRY, year = obsTime, mean_wage = obsValue)]
+oecd_meanw <- oecd_wage_dt[, j = .(iso3c = COUNTRY, year = obsTime, meanwage.OECD = obsValue)]
 
 #
 #
@@ -91,7 +91,7 @@ oecd_rminwage_dt <- as.data.table(oecd_rminwage)
 # nrow(oecd_rminwage_dt)
 
 # filter required columns
-oecd_rmw_f <- oecd_rminwage_dt[, j = .(iso3c = COUNTRY, year = obsTime, rminwage = obsValue)]
+oecd_rmw_f <- oecd_rminwage_dt[, j = .(iso3c = COUNTRY, year = obsTime, rminwage.OECD = obsValue)]
 
 #
 #
@@ -104,8 +104,11 @@ data_wage_f <- merge(data_wage_f, oecd_meanw, by = c("iso3c","year"), all = T)
 # View(data_wage_f)
 # names(data_wage_f)
 
+# only observations past 1980
+data_wage_f <- data_wage_f[year >= 1980, ]
+
 # write data into csv
-write.csv(data_wage_f, file = "Auxiliary data/wages oecd.csv", row.names = F)
+write.csv(data_wage_f, file = "Auxiliary data/to merge/wages oecd.csv", row.names = F)
 
 #
 #

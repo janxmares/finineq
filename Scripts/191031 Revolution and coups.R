@@ -37,4 +37,4 @@ revcoups <- revcoups[!is.na(iso3c),]
 revcoups <- revcoups[year >= 1980,]
 
 # write into file
-write.csv(revcoups, file = "Auxiliary data/revcoups.csv", row.names = F)
+write.csv(revcoups, file = "Auxiliary data/to merge/revcoups.csv", row.names = F)

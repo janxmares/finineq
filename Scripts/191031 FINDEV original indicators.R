@@ -16,14 +16,17 @@ findev_gfdd <- loadWorkbook("Auxiliary data/October2019gfdd.xlsx")
 findev <- data.table(readWorksheet(findev_gfdd, sheet="Data - October 2019", startRow=1, startCol=1))
 
 # filter required columns
-findev <- findev[, j = .(iso3c = iso3, year, gfddai01, gfddam01, gfdddi01, gfdddm01,
+findev <- findev[, j = .(iso3c = iso3, year, gfddai01,gfddai02, gfddam01, gfdddi01, gfdddm01,
 						 gfddei01, gfddem01, gfddsi01, gfddsm01)]
 
 # rename the variables
-setnames(findev, c("gfddai01","gfddam01","gfdddi01","gfdddm01","gfddei01","gfddem01",
+setnames(findev, c("gfddai01","gfddai02","gfddam01","gfdddi01","gfdddm01","gfddei01","gfddem01",
 				   "gfddsi01","gfddsm01"),
-				 c("BankAcc","StockOutTop10","PrivateCredit","MarketCap","NIM",
+				 c("BankAcc","BankBranches","StockOutTop10","PrivateCredit","MarketCap","NIM",
 				   "MarketTurn","ZScore","StockVol"))
 
+# only observations past 1980
+findev <- findev[year >= 1980, ]
+
 # write data into file
-write.csv(findev, file = "Auxiliary data/findev.csv", row.names = F)
+write.csv(findev, file = "Auxiliary data/to merge/findev orig.csv", row.names = F)

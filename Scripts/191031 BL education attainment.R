@@ -24,7 +24,7 @@ setnames(bl, c("lpc","lsc","lhc"),c("PrEdu","SecEdu","TerEdu"))
 # Drop redundant column
 bl[,c("country"):=NULL]
 
-View(bl)
+# View(bl)
 
 #
 #
@@ -53,5 +53,8 @@ bl_fcast <- bl_fcast[year == 2015, ]
 bl_final <- rbind(bl, bl_fcast)
 bl_final <- bl_final[order(iso3c, year), ]
 
+# only observations past 1980
+bl_final <- bl_final[year >= 1980, ]
+
 # write data into file
-write.csv(bl_final, file = "Auxiliary data/bl.csv", row.names = F)
+write.csv(bl_final, file = "Auxiliary data/to merge/bl.csv", row.names = F)

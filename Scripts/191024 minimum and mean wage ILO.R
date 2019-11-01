@@ -23,14 +23,17 @@ data_ilo_meanwage <- data.table(get_ilostat("EAR_4MTH_SEX_ECO_CUR_NB_A"))
 ## minimum wage
 
 # filter required columns
-data_minwage <- data_ilo_minwage[, .(ref_area, indicator, time, obs_value)]
-setnames(data_minwage, c("iso3c","indicator","year","value"))
+data_minwage <- data_ilo_minwage[, .(ref_area, time, obs_value)]
+setnames(data_minwage, c("iso3c","year","minwage.ILO"))
 
 # data_minwage[, country := countrycode(iso3c, "iso3c", "country.name")] # test iso3 codes
-View(data_ilo_minwage)
-# replace the indicator value by simpler one
-data_minwage[, indicator := "minwage"]
-head(data_minwage)
+# head(data_minwage)
+
+# only observations past 1980
+data_minwage <- data_minwage[year >= 1980, ]
+
+# write into file
+write.csv(data_minwage, file = "Auxiliary data/to merge/minwage ILO.csv", row.names = F)
 
 #
 #
@@ -178,7 +181,7 @@ data_meanwage <- data_meanwage[!(ref_area == "ZAF" & !(source %in% c("DA:1811","
 # order mean wage by country, year
 data_meanwage <- data_meanwage[order(ref_area, year),]
 
-# write it into excel
+# write it into file
 # write.csv(data_meanwage, file="mw.csv", row.names = F)
 
 #
@@ -186,6 +189,14 @@ data_meanwage <- data_meanwage[order(ref_area, year),]
 
 # read the manually adjusted data in excel
 data_mw <- data.table(read.csv(file="Auxiliary data/ILO meanwage final.csv", header = T, stringsAsFactors = T))
+
+# filter columns and adjust names
+data_mw <- data_mw[, j = .(iso3c = ref_area, year, meanwage.ILO = value)]
+
+# only observations past 1980
+data_mw <- data_mw[year >= 1980, ]
+
+write.csv(data_mw, file = "Auxiliary data/to merge/meanwage ILO.csv", row.names = F)
 
 #
 #
