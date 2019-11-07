@@ -27,6 +27,10 @@ chinnito <- chinnito[, j = .(iso3c = ccode, year, kaopen)]
 # only observations past 1980
 chinnito <- chinnito[year >= 1980, ]
 
+# adjust iso3 code for romania and congo
+chinnito[iso3c == "ROM", iso3c := "ROU"]
+chinnito[iso3c == "ZAR", iso3c := "COD"]
+
 #
 #
 

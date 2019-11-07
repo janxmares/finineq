@@ -18,12 +18,12 @@ findev_wb <- loadWorkbook("Auxiliary data/financial_ind_wb.xlsx")
 findev <- data.table(readWorksheet(findev_wb,sheet="Sheet1", startRow=1, startCol=1), stringsAsFactors=F)
 
 # filter required columns
-findev <- findev[,j=.(iso3c=code, year=year, FID=FID,
-											 FIA=FIA,
-											 FIE=FIE,
-											 FMD=FMD,
-											 FMA=FMA,
-											 FME=FME)]
+findev <- findev[,j = .(iso3c = code, year = year, FID = FID,
+												   FIA = FIA,
+												   FIE = FIE,
+												   FMD = FMD,
+											 	   FMA = FMA,
+											 	   FME = FME)]
 
 # replace 0 values (unobserved) with NAs
 findev[FID == 0, FID := NA]
@@ -35,6 +35,10 @@ findev[FME == 0, FME := NA]
 
 # only observations past 1980
 findev <- findev[year >= 1980, ]
+
+# adjust iso3 code for romania and congo
+findev[iso3c == "ROM", iso3c := "ROU"]
+findev[iso3c == "ZAR", iso3c := "COD"]
 
 # write into file
 write.csv(findev, file = "Auxiliary data/to merge/findev.csv", row.names = F)

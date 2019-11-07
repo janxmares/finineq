@@ -5,6 +5,11 @@
 library(data.table)
 library(countrycode)
 library(WDI)
+library(rsdmx)
+library(fredr)
+
+# set APi key for FRED
+fredr_set_key("7c540f109056100978e41ecdbdec8d59")
 
 # Set the working directory
 wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
@@ -99,7 +104,47 @@ setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 
 # Check
 # names(wbdatasub)
-# # View(wbdatasub)
+# View(wbdatasub)
+
+# Add inflation data for Argentina as they are not available from WB
+# gdp vs trend gdp
+infl <- as.data.table(fredr_series_observations(
+  series_id = "FPCPITOTLZGARG",
+  observation_start = as.Date("1980-01-01"),
+  frequency = "a",
+  units = c("pch")
+))
+
+infl[, iso3c := 'ARG']
+infl[, year := year(date)]
+infl <- infl[, j = .(iso3c, year, InflArg = value)]
+
+# merge wb data and fred on Argentina
+wbdatasub <- merge(wbdatasub, infl, by = c("iso3c","year"), all = T)
+wbdatasub[iso3c == "ARG" & is.na(Infl), Infl := InflArg]
+wbdatasub[, InflArg := NULL]
+
+# Add inflation data for Mozambique as they are not available from WB
+infl <- as.data.table(fredr_series_observations(
+  series_id = "FPCPITOTLZGMOZ",
+  observation_start = as.Date("1980-01-01"),
+  frequency = "a",
+  units = c("pch")
+))
+
+infl[, iso3c := 'MOZ']
+infl[, year := year(date)]
+infl <- infl[, j = .(iso3c, year, InflMoz = value)]
+
+# merge wb data and fred on Argentina
+wbdatasub <- merge(wbdatasub, infl, by = c("iso3c","year"), all = T)
+wbdatasub[iso3c == "MOZ" & is.na(Infl), Infl := InflMoz]
+wbdatasub[, InflMoz := NULL]
+
+#
+#
+
+# View(wbdatasub)
 
 #
 #

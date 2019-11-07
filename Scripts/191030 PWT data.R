@@ -15,13 +15,13 @@ setwd(wd)
 #
 
 # Load Penn World table 
-pwt <- data.table(read.table(file="Auxiliary data/pwt90.csv", header=T, sep=";", stringsAsFactors=F))
+pwt <- data.table(read.csv(file="Auxiliary data/pwt91.csv", header=T, stringsAsFactors=F))
 
 # Data on capital
-capital_detail <- data.table(read.dta13("Auxiliary data/pwt90_capital_detail.dta"))
+capital_detail <- data.table(read.dta13("Auxiliary data/pwt91_capital_detail.dta"))
 
 # Restrict to only 1980+
-capital_detail <- capital_detail[year %in% c(1980:2009),]
+capital_detail <- capital_detail[year %in% c(1980:2017),]
 
 # Construct the constant prices series
 capital_detail[,Ir_Mach:=Ic_Mach/Ip_Mach]
@@ -37,15 +37,16 @@ capital_detail[,rest_share:=(Ir_Struc+Ir_TraEq+Ir_Other)/(Ir_Struc+Ir_TraEq+Ir_O
 #
 
 # Get fixed capital formation shares from basic pwt
-gfcf <- pwt[year %in% c(1980:2009),j=list(iso3c=countrycode, country=country, year=year, csh_i=csh_i)]
+gfcf <- pwt[year %in% c(1980:2017),j=list(iso3c = countrycode, country = country, year = year, csh_i = csh_i)]
 
 # Merge fixed capital formation with detail on capital
-investment_f <- merge(gfcf, capital_detail[,j=list(iso3c=countrycode,year=year, mach_share=mach_share, rest_share=rest_share)],
-					  by=c("iso3c","year"))
+investment_f <- merge(gfcf, capital_detail[,j = list(iso3c = countrycode,year = year, mach_share = mach_share, rest_share = rest_share)],
+					  by = c("iso3c","year"))
 
 # Construct the shares of equip and nonequip investment
-investment_f[,EquipI:=mach_share*csh_i]
-investment_f[,NonequipI:=rest_share*csh_i]
+investment_f[,EquipI := mach_share*csh_i]
+investment_f[,NonequipI := rest_share*csh_i]
+investment_f[, to:= mach_share + rest_share]
 
 # select required columns
 investment_f <- investment_f[, j = .(iso3c, year, EquipI, NonequipI)]

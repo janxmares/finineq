@@ -15,16 +15,8 @@ setwd(wd)
 
 revcoups <- data.table(read.table("http://www.uky.edu/~clthyn2/coup_data/powell_thyne_ccode_year.txt", sep="\t", header = T, stringsAsFactors = F))
 
-# get country codes from Gleditsch and Ward (1999)
-gwstates <- as.data.table(gwstates)
-gwcodes <- gwstates[, j = .(ccode = gwcode, iso3c)]
-gwcodes <- gwcodes[!(duplicated(gwcodes$ccode)),] # some states are duplicate as they begin and cease to exist
-
-# merge with revcoups data
-revcoups <- merge(revcoups, gwcodes, by = c("ccode"), all = T)
-
-#
-#
+# assign 
+revcoups[, iso3c := countrycode(ccode,'gwn','iso3c')]
 
 # get the required columns
 revcoups <- revcoups[, j = .(iso3c, year, RevCoups = coup1 + coup2 + coup3 + coup4)]
