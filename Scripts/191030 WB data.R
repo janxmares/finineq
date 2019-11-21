@@ -41,7 +41,10 @@ setwd(wd)
 # SP.DYN.LE00.IN # 			Life expectancy at birth
 # TX.VAL.MMTL.ZS.UN #		Ores and metals exports (% of merchandise exports)
 # TX.VAL.FUEL.ZS.UN # 		Fuel exports (% of merchandise exports)
-
+# SE.PRM.ENRR #				School enrollment, primary
+# SE.SEC.ENRR #				School enrollment, secondary
+# SE.TER.ENRR #				School enrollment, tertiary
+# SL.UEM.TOTL.ZS 			Unemployment, total (% of total labor force) (ILO estimate)
 
 #
 #
@@ -55,6 +58,7 @@ setwd(wd)
 # HD.HCI.HLOS #				Harmonized Test Scores # ONLY AVAILABLE IN 2018	
 # SL.EMP.TOTL.SP.ZS #		Employment to population ratio, 15+, total (%) (modeled ILO estimate)
 # NY.GDP.MKTP.CD # 			Gross domestic product (GDP), current market prices $US
+# SL.UEM.TOTL.NE.ZS			Unemployment, total (% of total labor force) (national estimate)
 
 #
 #
@@ -66,7 +70,7 @@ wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW",
 			"NY.ADJ.NNAT.GN.ZS","RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS",
 			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD",
 			"NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN",
-			"SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR")
+			"SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS")
 
 # Read first dataset to obtain selected country codes
 wbdata <- data.table(WDI(indicator = wbvars, start = 1980, end = 2017))
@@ -96,23 +100,23 @@ setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 				      "RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS",
 				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NE.TRD.GNFS.ZS",
 				      "SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN",
-				      "SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR"),
+				      "SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS"),
 					c("NatRes","GovExp","GDSavings","PopGrowth","PopTot","Infl","EducExp","VAI",
 					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","Mortality","GFCF",
 					  "EmplRate","PubEducExp","GDPpc","TradeOpen","LifeExp","ExpMetalOre",
-					  "ExpFuel","EnrolPri","EnrolSec","EnrolTer"))
+					  "ExpFuel","EnrolPri","EnrolSec","EnrolTer","Unemployment"))
 
 # Check
 # names(wbdatasub)
 # View(wbdatasub)
 
 # Add inflation data for Argentina as they are not available from WB
-# gdp vs trend gdp
+# From FRED
 infl <- as.data.table(fredr_series_observations(
   series_id = "FPCPITOTLZGARG",
   observation_start = as.Date("1980-01-01"),
   frequency = "a",
-  units = c("pch")
+  units = c("lin")
 ))
 
 infl[, iso3c := 'ARG']
@@ -129,17 +133,42 @@ infl <- as.data.table(fredr_series_observations(
   series_id = "FPCPITOTLZGMOZ",
   observation_start = as.Date("1980-01-01"),
   frequency = "a",
-  units = c("pch")
+  units = c("lin")
 ))
 
 infl[, iso3c := 'MOZ']
 infl[, year := year(date)]
 infl <- infl[, j = .(iso3c, year, InflMoz = value)]
 
-# merge wb data and fred on Argentina
+# merge wb data and fred on Mozambique
 wbdatasub <- merge(wbdatasub, infl, by = c("iso3c","year"), all = T)
 wbdatasub[iso3c == "MOZ" & is.na(Infl), Infl := InflMoz]
 wbdatasub[, InflMoz := NULL]
+
+#
+#
+
+# Add inflation data for Cyprusn as they are not available from WB
+# from Eurostat
+source("Scripts/read.eurostat.R")
+infl_eurostat <- read.eurostat('prc_hicp_aind', flags = F)
+
+# filter year on year changes for cyprus, overall HICP
+infl_cyp <- infl_eurostat[UNIT == "RCH_A_AVG" & GEO == "CY" & COICOP == "CP00",]
+
+# reshape to long format, adjust years, assign iso3 code
+infl_cyp[, c("UNIT","COICOP") := NULL]
+infl_cyp_l <- melt(infl_cyp, id.vars = c("GEO"), variable.name = "year", value.name = "InflCyp")
+
+infl_cyp_l[, year := as.numeric(str_replace(year, "X",""))]
+
+infl_cyp_l[, iso3c := countrycode(GEO, "iso2c", "iso3c")]
+infl_cyp_l[, c("GEO") := NULL]
+
+# merge with main data
+wbdatasub <- merge(wbdatasub, infl_cyp_l, by = c("iso3c","year"), all = T)
+wbdatasub[iso3c == "CYP" & is.na(Infl), Infl := InflCyp]
+wbdatasub[, InflCyp := NULL]
 
 #
 #
