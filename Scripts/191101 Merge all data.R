@@ -33,6 +33,8 @@ leftwing <- data.table(read.csv(file = "Auxiliary data/to merge/IDB leftwing.csv
 swiid <- data.table(read.csv(file = "Auxiliary data/to merge/swiid.csv", header = T, stringsAsFactors = F))
 icrg <- data.table(read.csv(file = "Auxiliary data/to merge/icrg.csv", header = T, stringsAsFactors = F))
 glob <- data.table(read.csv(file = "Auxiliary data/to merge/kof.csv", header = T, stringsAsFactors = F))
+medage <- data.table(read.csv(file = "Auxiliary data/to merge/median age.csv", header = T, stringsAsFactors = F))
+
 
 #
 #
@@ -84,6 +86,7 @@ data <- merge(data, leftwing, by = c("iso3c","year"), all = T)
 data <- merge(data, swiid, by = c("iso3c","year"), all = T)
 data <- merge(data, icrg, by = c("iso3c","year"), all = T)
 data <- merge(data, glob, by = c("iso3c","year"), all = T)
+data <- merge(data, medage, by = c("iso3c","year"), all = T)
 
 # corrected for the missing waryears, revcoups, leftwign obs.
 data[is.na(WarYears), WarYears := 0]
