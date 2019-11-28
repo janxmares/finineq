@@ -146,7 +146,7 @@ data_try <- data_try[complete.cases(data_try), ]
 # demean the data
 data_dm <- data_try[, lapply(.SD[,2:ncol(.SD)], demean, na.rm = T), by = c("iso3c","country")]
 
-View(data_dm)
+# View(data_dm)
 
 # add back the year column
 data_dm[, period := data_try$period]
