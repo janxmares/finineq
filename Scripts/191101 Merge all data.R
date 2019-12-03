@@ -7,10 +7,11 @@ library(countrycode)
 library(zoo)
 library(BMS)
 library(imputeTS)
+library(here)
 
 # Set the working directory
-wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
-setwd(wd)
+# wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
+# setwd(wd)
 
 # read all the underlying data
 wid <- data.table(read.csv(file = "Auxiliary data/to merge/wid data.csv", header = T, stringsAsFactors = F))
@@ -95,10 +96,6 @@ data[is.na(LeftWing), LeftWing := 0]
 # checks
 # View(data)
 # View(data[duplicated(data[, j = .(iso3c,year)]),]) # should be NULL table
-
-# Add square of GDPpc and Inflation
-data[, GDPpc2 := GDPpc2^2]
-data[, Infl2 := Infl^2]
 
 # write final data
 write.csv(data, file = "data_hm.csv", row.names = F)

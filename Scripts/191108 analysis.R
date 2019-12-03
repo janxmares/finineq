@@ -5,7 +5,7 @@
 library(data.table)
 library(countrycode)
 # library(zoo)
-library(BMS)
+library(dilutBMS2)
 library(imputeTS)
 library(here)
 library(dummies)
@@ -23,6 +23,9 @@ data <- data[!(iso3c %in% c("COM","STP","SYC","PSE")),]
 
 # adjust the variables
 data[, c("PopTot","GDPpc") := .(log(PopTot), log(GDPpc))]
+
+# Add square of GDPpc and Inflation
+data[, c("GDPpc#GDPpc","Infl#Infl","EducIndex#EducIndex") := .(GDPpc^2, Infl^2, EducIndex^2)]
 
 #
 #
@@ -51,7 +54,8 @@ drops <- c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","EnrolPri", # 
 		   "MetalOre","ExpFuel", # correlated with NatRes
 		   "corr","burreau","demAcc","lawOrder", # ICRG data
 		   "GFCF", # duplicit with NonequipI + EquipI 
-		   "WarYears","RevCoups") # invariant in the sample
+		   "WarYears","RevCoups", # invariant in the sample
+		   "Age") # only available in 5-year intervals
 
 
 data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","EnrolPri", # unavailable for a lot of years
@@ -66,11 +70,10 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   # "WarYears","RevCoups", # invariant in the sample
 		   "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
-		   "PrEdu","SecEdu","TerEdu") := NULL] 
+		   "PrEdu","SecEdu","TerEdu","Age") := NULL] 
 
 # how many observations are NAN for individual variables?
-sapply(data_try, function(x){sum(is.na(x))})
-
+# sapply(data_try, function(x){sum(is.na(x))})
 
 data_try <- data_try[complete.cases(data_try), ]
 
@@ -87,14 +90,14 @@ setcolorder(data_dm, c("GiniNet", names(data_dm[,names(data_dm)!="GiniNet"])))
 
 dum <- dummy(data_dm$year, sep = "_")
 data_dm <- cbind(data_dm, dum)
-data_dm[, c("year","year_2000","WarYears","RevCoups","Top10share") := NULL]
+data_dm[, c("year","year_2000","WarYears","RevCoups","Top1share","Top10share") := NULL]
 
 data_dm <- data_dm[complete.cases(data_dm), ]
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
 bma <- bms(data_dm, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
-                    nmodel=5000, mcmc="bd",
+                    nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
 coef(bma, exact = T)
@@ -110,6 +113,9 @@ View(data_dm)
 
 # Averages - 3 year
 
+#
+#
+#
 #
 #
 
@@ -139,7 +145,7 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   # "WarYears","RevCoups", # invariant in the sample
 		   "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
-		   "PrEdu","SecEdu","TerEdu") := NULL] 
+		   "PrEdu","SecEdu","TerEdu","Age") := NULL] 
 
 data_try <- data_try[complete.cases(data_try), ]
 
@@ -153,18 +159,18 @@ data_dm[, period := data_try$period]
 data_dm[, c("iso3c","country") := NULL]
 
 # order variables, the dependent must be first
-setcolorder(data_dm, c("Top10share", names(data_dm[,names(data_dm)!="Top10share"])))
+setcolorder(data_dm, c("GiniNet", names(data_dm[,names(data_dm)!="GiniNet"])))
 
 
 dum <- dummy(data_dm$period, sep = "_")
 data_dm <- cbind(data_dm, dum)
-data_dm[, c("period","period_1","WarYears","RevCoups","Top1share") := NULL]
+data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","Top10share") := NULL]
 
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
 bma <- bms(data_dm, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
-                    nmodel=5000, mcmc="bd",
+                    nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
 coef(bma, exact = T)
@@ -203,7 +209,7 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   # "WarYears","RevCoups", # invariant in the sample
 		   "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
-		   "PrEdu","SecEdu","TerEdu") := NULL] 
+		   "PrEdu","SecEdu","TerEdu","Age") := NULL] 
 
 data_try <- data_try[complete.cases(data_try), ]
 

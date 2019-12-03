@@ -30,7 +30,7 @@ medage <- medage[!is.na(iso3c), ]
 medage[, c('ccode') := NULL]
 
 # transform into long format
-medage <- melt(medage, id.vars = c('country','iso3c'))
+medage <- melt(medage, id.vars = c('country','iso3c'), value.name = 'Age')
 medage[, year := as.numeric(str_replace(variable, "x", ""))]
 medage[, c('country','variable') := NULL]
 
