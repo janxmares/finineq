@@ -1,4 +1,4 @@
-# Preliminary analysis
+# Preliminary analysis, market gini coefficient
 # Jan Mares, 191108
 
 # Libraries
@@ -39,7 +39,7 @@ data[, c("GDPpc#GDPpc","Infl#Infl","EducIndex#EducIndex") := .(GDPpc^2, Infl^2, 
 data_f <- data[year %in% c(2000:2014),]
 
 # drop observations for which we do not have the depenedent variale
-data_f <- data_f[!is.na(Top10share), ]
+data_f <- data_f[!is.na(GiniNet), ]
 
 # interpolate rule of law (missing for 2001)
 data_f[, RuleofLaw := na.interpolation(RuleofLaw, option = "linear"), by = c("iso3c")]
@@ -96,14 +96,15 @@ data_dm <- data_dm[complete.cases(data_dm), ]
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
-bma <- bms(data_dm, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
+bma_1y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
                     nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
-coef(bma, exact = T)
-summary(bma)
+coef(bma_1y_gini_baseline, exact = T)
+summary(bma_1y_gini_baseline)
 
-View(data_dm)
+# save the results into file
+save(bma_1y_gini_baseline, file = here("Results/bma_1y_gini_baseline.Rdata"))
 
 #
 #
@@ -131,7 +132,7 @@ data_f[year %in% c(2012:2014), period := 5]
 data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
-data_f <- data_f[!is.nan(Top10share),]
+data_f <- data_f[!is.nan(GiniNet),]
 
 data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","EnrolPri", # unavailable for a lot of years
 		   "EnrolSec","EnrolTer","wage.mintomean.OECD","wage.mintomedian.OECD",  # unavailable for a lot of years
@@ -169,12 +170,16 @@ data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","Top10share") 
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
-bma <- bms(data_dm, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
+bma_3y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
                     nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
-coef(bma, exact = T)
-summary(bma)
+coef(bma_3y_gini_baseline, exact = T)
+summary(bma_3y_gini_baseline)
+
+# save the results into file
+save(bma_3y_gini_baseline, file = here("Results/bma_3y_gini_baseline.Rdata"))
+
 
 #
 #
@@ -195,7 +200,7 @@ data_f[year %in% c(2010:2014), period := 3]
 data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
-data_f <- data_f[!is.nan(Top10share),]
+data_f <- data_f[!is.nan(GiniNet),]
 
 data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","EnrolPri", # unavailable for a lot of years
 		   "EnrolSec","EnrolTer","wage.mintomean.OECD","wage.mintomedian.OECD",  # unavailable for a lot of years
@@ -209,7 +214,7 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   # "WarYears","RevCoups", # invariant in the sample
 		   "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
-		   "PrEdu","SecEdu","TerEdu","Age") := NULL] 
+		   "PrEdu","SecEdu","TerEdu","Age") := NULL]
 
 data_try <- data_try[complete.cases(data_try), ]
 
@@ -225,20 +230,22 @@ data_dm <- data_dm[!(iso3c %in% c("CPV","AGO","BEN","LBN","LBR","OMN","QAT","SAU
 data_dm[, c("iso3c","country") := NULL]
 
 # order variables, the dependent must be first
-setcolorder(data_dm, c("Top10share", names(data_dm[,names(data_dm)!="Top10share"])))
+setcolorder(data_dm, c("GiniNet", names(data_dm[,names(data_dm)!="GiniNet"])))
 
 
 dum <- dummy(data_dm$period, sep = "_")
 data_dm <- cbind(data_dm, dum)
-data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","GiniNet") := NULL]
+data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","Top10share") := NULL]
 
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
-bma <- bms(data_dm, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
-                    nmodel=5000, mcmc="bd",
+bma_5y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
+                    nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
+coef(bma_5y_gini_baseline, exact = T, std.coefs = T)
+summary(bma_5y_gini_baseline)
 
-coef(bma, exact = T)
-summary(bma)
+# save the results into file
+save(bma_5y_gini_baseline, file = here("Results/bma_5y_gini_baseline.Rdata"))
