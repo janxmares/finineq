@@ -108,7 +108,7 @@ save(bma_3y_gini_dilut, file = here("Results/bma_3y_gini_dilut.Rdata"))
 #
 
 # random model prior (accounting for a number of regressors in prior model probability)
-bma_3y_gini_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random",
+bma_3y_gini_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random", mprior.size = 5,
 						  g = "hyper", nmodel=5000, mcmc="bd.int",
                   		  fixed.reg = dummies, user.int = F)
 

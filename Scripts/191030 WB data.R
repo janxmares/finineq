@@ -37,6 +37,7 @@ setwd(wd)
 # SL.EMP.TOTL.SP.NE.ZS # 	Employment to population ratio, 15+, total (%) (national estimate)
 # SE.XPD.TOTL.GD.ZS # 		Public education expenditures as a share of GDP
 # NY.GDP.PCAP.PP.KD #		GDP per capita, PPP (constant 2011 international $)
+# NY.GDP.MKTP.KD.ZG			GDP, annual growth (%)
 # NE.TRD.GNFS.ZS #          Trade (% of GDP)
 # SP.DYN.LE00.IN # 			Life expectancy at birth
 # TX.VAL.MMTL.ZS.UN #		Ores and metals exports (% of merchandise exports)
@@ -67,10 +68,11 @@ setwd(wd)
 wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW","SP.POP.TOTL",
 			"FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS","NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS",
 			"BX.KLT.DINV.WD.GD.ZS","BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS",
-			"NY.ADJ.NNAT.GN.ZS","RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS",
+			"NY.ADJ.NNAT.GN.ZS","RL.EST","NE.GDI.FTOT.ZS",
 			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD",
-			"NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN",
-			"SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS")
+			"NY.GDP.MKTP.KD.ZG","NE.TRD.GNFS.ZS","SP.DYN.LE00.IN",
+			"TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN","SE.PRM.ENRR",
+			"SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS")
 
 # Read first dataset to obtain selected country codes
 wbdata <- data.table(WDI(indicator = wbvars, start = 1980, end = 2017))
@@ -97,13 +99,14 @@ setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 				      "SP.POP.GROW","SP.POP.TOTL","FP.CPI.TOTL.ZG","NY.ADJ.AEDU.GN.ZS",
 				      "NV.IND.TOTL.ZS","NV.AGR.TOTL.ZS","BX.KLT.DINV.WD.GD.ZS",
 				      "BM.KLT.DINV.WD.GD.ZS","GC.TAX.TOTL.GD.ZS","NY.ADJ.NNAT.GN.ZS",
-				      "RL.EST","SP.DYN.IMRT.IN","NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS",
-				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NE.TRD.GNFS.ZS",
-				      "SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN",
-				      "SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS"),
+				      "RL.EST","NE.GDI.FTOT.ZS","SL.EMP.TOTL.SP.NE.ZS",
+				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NY.GDP.MKTP.KD.ZG",
+					  "NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN",
+					  "TX.VAL.FUEL.ZS.UN","SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR",
+					  "SL.UEM.TOTL.ZS"),
 					c("NatRes","GovExp","GDSavings","PopGrowth","PopTot","Infl","EducExp","VAI",
-					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","Mortality","GFCF",
-					  "EmplRate","PubEducExp","GDPpc","TradeOpen","LifeExp","ExpMetalOre",
+					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","GFCF",
+					  "EmplRate","PubEducExp","GDPpc","GDPgrowth","TradeOpen","LifeExp","ExpMetalOre",
 					  "ExpFuel","EnrolPri","EnrolSec","EnrolTer","Unemployment"))
 
 # Check
