@@ -180,6 +180,18 @@ summary(bma_3y_gini_baseline)
 # save the results into file
 save(bma_3y_gini_baseline, file = here("Results/bma_3y_gini_baseline.Rdata"))
 
+#
+#
+
+bma_3y_gini_dilut <- bms(data_dm, iter=500000, burn=100000, mprior = "dilut",
+						  g = "hyper", nmodel=5000, mcmc="bd.int",
+                  		  fixed.reg = dummies, user.int = F)
+
+coef(bma_3y_gini_dilut, exact = T)
+summary(bma_3y_gini_dilut)
+
+# save the results into file
+save(bma_3y_gini_dilut, file = here("Results/bma_3y_gini_dilut.Rdata"))
 
 #
 #
@@ -214,7 +226,7 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   # "WarYears","RevCoups", # invariant in the sample
 		   "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
-		   "PrEdu","SecEdu","TerEdu","Age") := NULL]
+		   "PrEdu","SecEdu","TerEdu") := NULL]
 
 data_try <- data_try[complete.cases(data_try), ]
 
@@ -249,3 +261,16 @@ summary(bma_5y_gini_baseline)
 
 # save the results into file
 save(bma_5y_gini_baseline, file = here("Results/bma_5y_gini_baseline.Rdata"))
+
+#
+#
+
+bma_5y_gini_random <- bms(data_dm, iter=500000, burn=100000, mprior = "random", mprior.size = 5,
+				          g = "hyper=2", nmodel=5000, mcmc="bd.int",
+                    fixed.reg = dummies, user.int = F)
+
+coef(bma_5y_gini_random, exact = T, std.coefs = T)
+summary(bma_5y_gini_random)
+
+# save the results into file
+save(bma_5y_gini_random, file = here("Results/bma_5y_gini_random.Rdata"))

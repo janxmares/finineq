@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2019.11.25)  29 NOV 2019 13:00
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2019.12.9)  21 DEC 2019 18:18
 entering extended mode
 **c:/Users/JM/Documents/GitHub/finineq/Paper/paper.tex
 (c:/Users/JM/Documents/GitHub/finineq/Paper/paper.tex
@@ -642,7 +642,8 @@ Package: longtable 2019/02/06 v4.12 Multi-page Table package (DPC)
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
-) (paper.aux)
+)
+No file paper.aux.
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
@@ -661,7 +662,6 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
 LaTeX Font Info:    ... okay on input line 73.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: longtable package is loaded.
-
 ("C:\Program Files\MiKTeX 2.9\tex/latex/caption\ltcaption.sty"
 Package: ltcaption 2018/08/26 v1.4a longtable captions (AR)
 )
@@ -775,22 +775,62 @@ Underfull \hbox (badness 3302) in paragraph at lines 80--80
 [1
 
 ]
+
+Package natbib Warning: Citation `pikettyandzucman2014' on page 1 undefined on 
+input line 107.
+
+
+Package natbib Warning: Citation `van2018inequality' on page 1 undefined on inp
+ut line 108.
+
 Package acronym Info: Label `acro:us' newly defined as it shall be overridden
 although it is yet undefined on input line 108.
- [1
 
-] (paper.bbl) [2
+Package acronym Warning: Acronym `us' is not defined on input line 108.
 
-] [3
 
-] (paper.aux) ) 
-Here is how much of TeX's memory you used:
- 17631 strings out of 427240
- 349923 string characters out of 3145703
- 453296 words of memory out of 3000000
- 22000 multiletter control sequences out of 15000+200000
- 542787 words of font info for 79 fonts, out of 3000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 45i,9n,42p,918b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
+Package acronym Warning: Acronym `us' is not defined on input line 108.
 
-Output written on paper.pdf (4 pages).
+
+Package natbib Warning: Citation `gilens_page_2014' on page 1 undefined on inpu
+t line 108.
+
+
+Package natbib Warning: Citation `marrero2013inequality' on page 1 undefined on
+ input line 110.
+
+Package acronym Info: Label `acro:oecd' newly defined as it shall be overridden
+
+although it is yet undefined on input line 114.
+
+Package acronym Warning: Acronym `oecd' is not defined on input line 114.
+
+
+Package acronym Warning: Acronym `oecd' is not defined on input line 114.
+
+
+Package natbib Warning: Citation `oecd2013crisis' on page 1 undefined on input 
+line 114.
+
+
+Package natbib Warning: Citation `LawSingh2014' on page 1 undefined on input li
+ne 116.
+
+
+Package natbib Warning: Citation `galormoav2004' on page 1 undefined on input l
+ine 119.
+
+
+Package natbib Warning: Citation `banerjeenewman1990' on page 1 undefined on in
+put line 121.
+
+
+Package natbib Warning: Citation `de2017finance' on page 1 undefined on input l
+ine 121.
+
+
+Package natbib Warning: Citation `GreenwoodJovanovic1990' on page 1 undefined o
+n input line 123.
+
+[1
+

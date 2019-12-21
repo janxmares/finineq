@@ -169,7 +169,7 @@ data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","GiniNet") := 
 
 dummies <- colnames(dum)[2:(ncol(dum))]
 
-# run BMA
+# run BMA, baseline
 bma_3y_top10_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
                     nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
@@ -180,6 +180,17 @@ summary(bma_3y_top10_baseline)
 # save the results into file
 save(bma_3y_top10_baseline, file = here("Results/bma_3y_top10_baseline.Rdata"))
 
+# run BMA, robustness
+bma_3y_top10_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random", mprior.size = 7,
+						   g = "hyper", nmodel=5000, mcmc="bd.int",
+                    	   fixed.reg = dummies, user.int = F)
+
+coef(bma_3y_top10_random, exact = T)
+summary(bma_3y_top10_random)
+
+# save the results into file
+save(bma_3y_top10_random, file = here("Results/bma_3y_top10_random.Rdata"))
+plotModelsize(bma_3y_top10_random)
 
 #
 #
@@ -435,7 +446,7 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   # "WarYears","RevCoups", # invariant in the sample
 		   "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
-		   "PrEdu","SecEdu","TerEdu","Age") := NULL] 
+		   "PrEdu","SecEdu","TerEdu") := NULL] 
 
 data_try <- data_try[complete.cases(data_try), ]
 

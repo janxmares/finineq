@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2019.11.25)  3 DEC 2019 13:20
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2019.11.25)  4 DEC 2019 14:51
 entering extended mode
 **"c:/Users/JM/Documents/GitHub/finineq/Output - results/output.tex"
 ("c:/Users/JM/Documents/GitHub/finineq/Output - results/output.tex"
@@ -400,7 +400,14 @@ LaTeX Info: Redefining \scshape on input line 4057.
 LaTeX Info: Redefining \upshape on input line 4062.
 LaTeX Info: Redefining \em on input line 4092.
 LaTeX Info: Redefining \emph on input line 4117.
-)) (output.aux)
+)) (output.aux
+
+LaTeX Warning: Label `table:gini1y' multiply defined.
+
+
+LaTeX Warning: Label `table:gini1y' multiply defined.
+
+)
 \openout1 = `output.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -475,17 +482,41 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 16.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
 
-[1
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
 
-] (output.aux) ) 
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+] [2
+
+] [3
+
+] [4
+
+]
+[5
+
+] [6
+
+] (output.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 15315 strings out of 427240
- 320460 string characters out of 3145703
- 404330 words of memory out of 3000000
- 19783 multiletter control sequences out of 15000+200000
- 532378 words of font info for 29 fonts, out of 3000000 for 9000
+ 15370 strings out of 427240
+ 321201 string characters out of 3145703
+ 415330 words of memory out of 3000000
+ 19813 multiletter control sequences out of 15000+200000
+ 536149 words of font info for 47 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 45i,4n,42p,377b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,8n,42p,377b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on output.pdf (1 page).
+Output written on output.pdf (6 pages).
