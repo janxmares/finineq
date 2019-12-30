@@ -5,6 +5,7 @@
 # Libraries
 library(data.table)
 library(countrycode)
+library(BMS)
 library(dilutBMS2)
 library(imputeTS)
 library(here)
@@ -94,7 +95,7 @@ save(bma_3y_gini_baseline, file = here("Results/bma_3y_gini_baseline.Rdata"))
 #
 
 # dilution model prior (accounting for corrlation between regressors)
-bma_3y_gini_dilut <- bms(data_dm, iter=5000000, burn=1000000, mprior = "dilut",
+bma_3y_gini_dilut <- dilutBMS2::bms(data_dm, iter=5000000, burn=1000000, mprior = "dilut",
 						  g = "hyper", nmodel=5000, mcmc="bd.int",
                   		  fixed.reg = dummies, user.int = F)
 
@@ -190,7 +191,7 @@ save(bma_3y_top10_baseline, file = here("Results/bma_3y_top10_baseline.Rdata"))
 #
 
 # dilution model prior (accounting for corrlation between regressors)
-bma_3y_top10_dilut <- bms(data_dm, iter=5000000, burn=1000000, mprior = "dilut",
+bma_3y_top10_dilut <- dilutBMS2::bms(data_dm, iter=5000000, burn=1000000, mprior = "dilut",
 						  g = "hyper", nmodel=5000, mcmc="bd.int",
                   		  fixed.reg = dummies, user.int = F)
 
@@ -286,7 +287,7 @@ save(bma_3y_top1_baseline, file = here("Results/bma_3y_top1_baseline.Rdata"))
 #
 
 # dilution model prior (accounting for corrlation between regressors)
-bma_3y_top1_dilut <- bms(data_dm, iter=5000000, burn=1000000, mprior = "dilut",
+bma_3y_top1_dilut <- dilutBMS2::bms(data_dm, iter=5000000, burn=1000000, mprior = "dilut",
 						  g = "hyper", nmodel=5000, mcmc="bd.int",
                   		  fixed.reg = dummies, user.int = F)
 
