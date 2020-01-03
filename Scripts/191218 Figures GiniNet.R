@@ -13,7 +13,7 @@ data <- data.table(read.csv(file = here('data_hm.csv'), header = T, stringsAsFac
 # View(data)
 
 # drop countries with unavailable data
-data <- data[!(iso3c %in% c("BEN","COM","PSE","STP","SYC","SWZ")),]
+data <- data[!(iso3c %in% c("BEN","COM","GIN","LBR","OMN","PSE","STP","SYC","SWZ")),]
 
 # adjust the variables
 data[, c("PopTot","GDPpc") := .(log(PopTot), log(GDPpc))]
@@ -51,7 +51,8 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 		   "corr","burreau","demAcc","lawOrder", # ICRG data
 		   "GFCF", # duplicit with NonequipI + EquipI ) := NULL]
 		   # "WarYears","RevCoups", # invariant in the sample
-		   "GiniMarket","RedistRel", # alternative inequality indicators
+		   "RedistRel", # alternative inequality indicators
+		#  "GiniMarket","RedistRel", # alternative inequality indicators
 		   "GovSize","LegalSystem","SoundMoney","TradeFreedom","Regulation", # subcomponents of EFW
 		   "PrEdu","SecEdu","TerEdu","Age") := NULL] 
 
@@ -80,6 +81,37 @@ data_try <- data_try[complete.cases(data_try), ]
 # Set up color scheme
 colset <- matrix(c(192,0,0,
                    55,96,146), ncol=3, byrow=T)
+
+# Top10 and top1 share to GiniNet
+pl1 <- ggplot(data_try, aes(Top10share, GiniNet)) +
+		      ylab("Gini index - income (after redistribution)") +
+		      xlab('Top 10% income share')
+		      
+pl1g <- pl1 + geom_point(size=2) +
+		theme_bw() +
+		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
+			  panel.border = element_rect(fill = NA, colour = 'black'),
+    		  legend.position="none") +
+        stat_smooth(method='lm', se=F) +
+        scale_colour_manual(values=rgb(colset/255)) + 
+        scale_fill_manual(values=rgb(colset/255))
+
+pl1g
+
+pl2 <- ggplot(data_try, aes(Top1share, GiniNet)) +
+		      ylab("Gini index - income (after redistribution)") +
+		      xlab('Top 1% income share')
+		      
+pl2g <- pl2 + geom_point(size=2) +
+		theme_bw() +
+		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
+			  panel.border = element_rect(fill = NA, colour = 'black'),
+    		  legend.position="none") +
+        stat_smooth(method='lm', se=F) +
+        scale_colour_manual(values=rgb(colset/255)) + 
+        scale_fill_manual(values=rgb(colset/255))
+
+pl2g
 
 #
 # Scatter plots of the variable with highest PIPs
@@ -334,6 +366,53 @@ dev.off()
 
 # demean the data
 data_dm <- data_try[, lapply(.SD[,2:ncol(.SD)], demean, na.rm = T), by = c("iso3c","country")]
+
+# Top10 and top1 share to GiniNet
+pl1 <- ggplot(data_dm, aes(Top10share, GiniNet)) +
+		      ylab("Gini index - income (after redistribution)") +
+		      xlab('Top 10% income share')
+		      
+pl1g <- pl1 + geom_point(size=2) +
+		theme_bw() +
+		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
+			  panel.border = element_rect(fill = NA, colour = 'black'),
+    		  legend.position="none") +
+        stat_smooth(method='lm', se=F) +
+        scale_colour_manual(values=rgb(colset/255)) + 
+        scale_fill_manual(values=rgb(colset/255))
+
+pl1g
+
+pl2 <- ggplot(data_dm, aes(Top1share, GiniNet)) +
+		      ylab("Gini index - income (after redistribution)") +
+		      xlab('Top 1% income share')
+		      
+pl2g <- pl2 + geom_point(size=2) +
+		theme_bw() +
+		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
+			  panel.border = element_rect(fill = NA, colour = 'black'),
+    		  legend.position="none") +
+        stat_smooth(method='lm', se=F) +
+        scale_colour_manual(values=rgb(colset/255)) + 
+        scale_fill_manual(values=rgb(colset/255))
+
+pl2g
+
+#
+#
+# regressions
+#
+#
+
+library(plm)
+fem <- plm(GiniMarket ~ Top10share, data=data_try, index=c("iso3c", "period"), model="within")
+summary(fem)
+
+reg <- lm(GiniMarket ~ Top10share - 1, data=data_dm)
+summary(reg)
+
+#
+#
 
 # data_dm[, c("WarYears","RevCoups","Top1share","Top10share") := NULL]
 data_dm <- data_dm[complete.cases(data_dm), ]
