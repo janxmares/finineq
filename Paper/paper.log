@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2019.12.9)  3 JAN 2020 18:26
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7250 64-bit) (preloaded format=xelatex 2019.12.9)  5 JAN 2020 15:34
 entering extended mode
 **c:/Users/JM/Documents/GitHub/finineq/Paper/paper.tex
 (c:/Users/JM/Documents/GitHub/finineq/Paper/paper.tex
@@ -776,16 +776,18 @@ Underfull \hbox (badness 3302) in paragraph at lines 81--81
 
 ]
 Package acronym Info: Label `acro:us' newly defined as it shall be overridden
-although it is yet undefined on input line 111.
-Package acronym Info: Label `acro:oecd' newly defined as it shall be overridden
-
-although it is yet undefined on input line 117.
+although it is yet undefined on input line 123.
  [1
 
-] [2]
+]
+Package acronym Info: Label `acro:oecd' newly defined as it shall be overridden
+
+although it is yet undefined on input line 129.
+ [2] [3]
 Package acronym Info: Label `acro:wals' newly defined as it shall be overridden
 
-although it is yet undefined on input line 142.
+although it is yet undefined on input line 161.
+ [4]
 File: figures/FIEGiniNet.eps Graphic file (type eps)
 <figures/FIEGiniNet.eps>
 File: figures/FIAGiniNet.eps Graphic file (type eps)
@@ -799,7 +801,7 @@ File: figures/GovExpGiniNet.eps Graphic file (type eps)
 File: figures/MortGiniNet.eps Graphic file (type eps)
 <figures/MortGiniNet.eps>
 Package acronym Info: Label `acro:gdp' newly defined as it shall be overridden
-although it is yet undefined on input line 183.
+although it is yet undefined on input line 218.
 File: figures/GDPGiniNet.eps Graphic file (type eps)
 <figures/GDPGiniNet.eps>
 File: figures/RuleLawGiniNet.eps Graphic file (type eps)
@@ -836,19 +838,19 @@ File: figures/TradeOpenGiniNet_dm.eps Graphic file (type eps)
 <figures/TradeOpenGiniNet_dm.eps>
 File: figures/plots_findev_gini_dm.eps Graphic file (type eps)
 <figures/plots_findev_gini_dm.eps>
- [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
-(paper.bbl [17
+ [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+[17] [18] [19] (paper.bbl [20
 
-]) [18] [19
+]) [21] [22
 
 ] (paper.aux) ) 
 Here is how much of TeX's memory you used:
- 18270 strings out of 427240
- 365425 string characters out of 3145704
- 460233 words of memory out of 3000000
- 22595 multiletter control sequences out of 15000+200000
- 542795 words of font info for 80 fonts, out of 3000000 for 9000
+ 18303 strings out of 427240
+ 366169 string characters out of 3145704
+ 461848 words of memory out of 3000000
+ 22626 multiletter control sequences out of 15000+200000
+ 542803 words of font info for 81 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 45i,9n,42p,904b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,9n,42p,938b,429s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on paper.pdf (20 pages).
+Output written on paper.pdf (23 pages).
