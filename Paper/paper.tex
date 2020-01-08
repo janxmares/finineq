@@ -72,8 +72,8 @@
 \onehalfspacing
 \title{Finance and Income Inequality - panel BMA approach\thanks{The author acknowledges support from Charles University Research Centre program No. UNCE/HUM/035}}
 % \author[a]{Roman Horvath}
-\author[a]{Jan Mares\footnote{\footnotesize Corresponding author's address: IES FSV UK, Opletalova 26, 110 00, Praha 1; \textbf{e-mail:janxmares@gmail.com}}}
-\affil[a]{Charles University, Prague}
+\author{Jan Mares\footnote{\footnotesize Corresponding author's address: IES FSV UK, Opletalova 26, 110 00, Praha 1; \textbf{e-mail:janxmares@gmail.com}}}
+\affil{Charles University, Prague}
 
 
 %\renewcommand\Authands{ and }
@@ -164,18 +164,37 @@ Table \ref{tab:ineq} report the summary statistics and correlations between the 
        \begin{tabular}{lrrrr}
         \toprule
         Variable & Mean & St. Dev. & Min & Max \\
-        After-tax Gini (SWIID) & & & & \\
+        \midrule
+        After-tax Gini index  & & & & \\
         Top 10\% income share & & & & \\
         Top 1\% income share & & & & \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-\cite{roineetal2009}, \citet{furceri2019robust} for the determinants of income inequality.
+We obtain the financial development indicators from \ac{gfdd}. The database offers detailed indicators along four dimensions of financial systems and allows to estimate the affect of changes in access, size, efficiency, and stability of financial markets. Furthermore, we can distinguish between banking sector and financial markets in all these dimensions. The data in for access and stability of financial markets remains sparse in the concerned period we must leave them out of analysis. We use the version of financial indicators from \cite{svirydzenka2016introducing}. The authors make use of principal component analysis in order to construct aggregate indicators in each characteristic of financial sector. In summary, we have indicators of financial institutions depth (FID), financial markets depth (FMD), access to financial institutions (FIA), efficiency of financial markets (FME), and institutions (FIE)\footnote{\citet{svirydzenka2016introducing} extrapolate the indicators from top to bottom if the original variables are unavailable, we make sure that that at least one variable is available for the construction of the index and no artificial correlation introduced to the data.}. We report the composition of each indicator in Table \ref{tab:finind}. 
 
-\citet{nolan2019drivers} bring a survey of the literature on determinants of inequality, summarizing the complexity of the inequality dynamics. They stress that many of the determinants are interlinked which implies difficulty in assigning precise effects to individual drivers of inequality. Additionally, they encourage complementary individual country case studies to support the finding of the general cross-country estimates.
+\begin{figure}
+    \label{fig:gini_findev}
+        \caption{Gini Coefficient and Financial Development Indicators}
+    \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini}
+    \end{figure}
+    
+Figure \ref{fig:gini_findev} shows the scatter plots between Gini coefficient and selected financial indicators.
 
-Both theoretical and empirical studies leave out the issue of importing the financial services from abroad. We include financial globalization from KOF among our control variables.
+We build the choice of other explanatory variables on a reviews of income inequality drivers \citep{roineetal2009,nolan2019drivers}, related study of finance-inequality nexus \citep{de2017finance}, and a more general inquiry into the robust determinants of income inequality \citep{furceri2019robust}. Table \ref{app:exog} reports all the control variables and their sources. 
+
+Specify the main categories of controls in the previous paragraph (based on Nolan + Furceri).
+
+% \citet{nolan2019drivers} bring a survey of the literature on determinants of inequality, summarizing the complexity of the inequality dynamics. They stress that many of the determinants are interlinked which implies difficulty in assigning precise effects to individual drivers of inequality. Additionally, they encourage complementary individual country case studies to support the finding of the general cross-country estimates.
+
+% Both theoretical and empirical studies leave out the issue of importing the financial services from abroad. We include financial globalization from KOF among our control variables.
+
+\begin{figure}
+    \label{fig:gini_findev_dm}
+        \caption{Gini Coefficient and Financial Development Indicators}
+    \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini_dm}
+    \end{figure}
 
 % % \label{sec:data}
 % \begin{figure}
@@ -307,11 +326,6 @@ Both theoretical and empirical studies leave out the issue of importing the fina
 % \includegraphics[width=\textwidth, keepaspectratio]{figures/TradeOpenGiniNet_dm}
 % \end{figure}
 
-% \begin{figure}
-%     \caption{Gini Coefficient and Financial Development Indicators}
-% \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini_dm}
-% \end{figure}
-
 %
 %
 \section{Methodology}
@@ -331,11 +345,52 @@ The benefits of capital markets liberalization seem to be concentrated to the to
 \bibliographystyle{chicagoa}
 \bibliography{literature}
 %
-% \clearpage
+\clearpage
 %
 % \appendix
-% \section{Appendix}
-% \label{sec:app}
+\section{Appendix}
+\label{sec:app}
+
+\begin{table}[ht!]
+    \small
+    \caption{Underlying Components of Financial Development Indicators}
+    \label{tab:finind}
+    \centering
+    \begin{tabular}{ll}
+      \toprule
+      \textsc{Indicator} & \textsc{Measure} \\
+      \midrule
+      \multicolumn{2}{l}{\textbf{Financial institutions}} \\
+      \midrule
+      \multirow{2}{*}{Access} 	& Bank branches per 100,000 adults \\
+                                  & ATMs per 100,000 adults \\
+      \midrule
+      \multirow{6}{*}{Efficiency}		& Net interest margin \\
+                                  & Lending-deposits spread \\ 
+                                  & Noninterest income to total income \\
+                                  & Overhead costs to total assets \\
+                                  & Return on assets \\
+                                  & Return on equity \\
+            
+      \midrule
+      \multirow{4}{*}{Depth}	& Domestic private credit to the real sector to the GDP \\
+                                  & Pension fund assets/GDP \\
+                                  & Mutual fund assets/GDP \\
+                                  & Insurance premiums life and nonlife/GDP \\
+      \midrule
+      \multicolumn{2}{l}{\textbf{Financial markets}} \\
+      \midrule
+      \multirow{6}{*}{Depth} 	& Stock market capitalization/GDP \\
+                                  & Stocks traded/GDP \\
+                                  & International debt securities of government/GDP \\
+                                  & Total debt securities of financial corporations/GDP \\
+                                  & Total debt securities of nonfinancial corporations/GDP \\
+      \midrule
+      Efficiency                  & Stock market turnover ratio (stocks traded/capitalization) \\
+      \bottomrule
+\end{tabular}
+\end{table}
+
 
 \renewcommand{\thesection}{A\arabic{section}}%
 \renewcommand{\thetable}{A\arabic{table}}%
