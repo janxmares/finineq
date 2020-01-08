@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.12.19)  8 JAN 2020 00:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.12.19)  8 JAN 2020 19:57
 entering extended mode
 **c:/Users/JM/Documents/GitHub/finineq/Paper/paper.tex
 (c:/Users/JM/Documents/GitHub/finineq/Paper/paper.tex
@@ -341,19 +341,19 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 ) (paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 77.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 82.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
@@ -411,91 +411,110 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 84.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 89.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 84.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 89.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 84.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 89.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 84.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 89.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 84.
+(Font)              <17.28> on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 84.
+(Font)              <12> on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 84.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
+(Font)              <10> on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 84.
+LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 89.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omslmr.fd"
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 84.
+(Font)              <8> on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 84.
+(Font)              <6> on input line 89.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 84.
+(Font)              <9> on input line 89.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 84.
+(Font)              <5> on input line 89.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 89.
 
-Underfull \hbox (badness 3260) in paragraph at lines 84--84
+Underfull \hbox (badness 1953) in paragraph at lines 89--89
+[][]\T1/lmr/m/n/9 The au-thor ac-knowl-edges sup-port from Charles Uni-ver-sity Re-search Cen-tre pro-gram No.
+ []
+
+
+Underfull \hbox (badness 3260) in paragraph at lines 89--89
 [][]\T1/lmr/m/n/9 Corresponding au-thor's ad-dress: IES FSV UK, Ople-talova 26, 110 00, Praha 1; \T1/lmr/bx/n/9 e-
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 93.
+(Font)              <10.95> on input line 98.
 [1
 
 {C:/Users/JM/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Package acronym Info: Label `acro:oecd' newly defined as it shall be overridden
-although it is yet undefined on input line 114.
+although it is yet undefined on input line 119.
  [1
 
 ]
 Package acronym Info: Label `acro:us' newly defined as it shall be overridden
-although it is yet undefined on input line 124.
+although it is yet undefined on input line 129.
  [2]
 Package acronym Info: Label `acro:wals' newly defined as it shall be overridden
-although it is yet undefined on input line 131.
- [3] [4] (paper.bbl [5
+although it is yet undefined on input line 136.
+Package acronym Info: Label `acro:swiid' newly defined as it shall be overridden
+although it is yet undefined on input line 151.
+Package acronym Info: Label `acro:wiid' newly defined as it shall be overridden
+although it is yet undefined on input line 151.
+Package acronym Info: Label `acro:lis' newly defined as it shall be overridden
+although it is yet undefined on input line 151.
+ [3]
+Package acronym Info: Label `acro:wid' newly defined as it shall be overridden
+although it is yet undefined on input line 153.
+Package acronym Info: Label `acro:dina' newly defined as it shall be overridden
+although it is yet undefined on input line 153.
+Package acronym Info: Label `acro:gdp' newly defined as it shall be overridden
+although it is yet undefined on input line 155.
+ [4]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 164.
+ [5] [6] (paper.bbl [7
 
-] [6]) [7] [8
-
-] (paper.aux) ) 
+] [8]) [9] (paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6798 strings out of 492450
- 94823 string characters out of 3129757
- 178014 words of memory out of 3000000
- 10991 multiletter control sequences out of 15000+200000
- 81520 words of font info for 71 fonts, out of 3000000 for 9000
+ 6844 strings out of 492450
+ 95396 string characters out of 3129757
+ 179645 words of memory out of 3000000
+ 11035 multiletter control sequences out of 15000+200000
+ 81276 words of font info for 75 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,9n,42p,1570b,292s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on paper.pdf (9 pages, 302511 bytes).
+ 57i,9n,42p,1642b,293s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
+Output written on paper.pdf (10 pages, 301250 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
+ 89 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2888,4 +2888,57 @@ This paper develops a meta-analysis of the empirical literature that estimates t
   publisher = {Springer},
 }
 
+@Article{kim2011nonlinearity,
+  author    = {Kim, Dong-Hyeon and Lin, Shu-Chin},
+  title     = {Nonlinearity in the financial development--income inequality nexus},
+  journal   = {Journal of Comparative Economics},
+  year      = {2011},
+  volume    = {39},
+  number    = {3},
+  pages     = {310--325},
+  publisher = {Elsevier},
+}
+
+@Unpublished{Solt2019,
+  author        = {Solt, Frederick},
+  title         = {Measuring Income Inequality Across Countries and Over Time: The Standardized World Income Inequality Database},
+  note          = {OSF. https://osf.io/3djtq. SWIID Version 8.0, February 2019.},
+  month         = {Feb},
+  year          = {2019},
+  bdsk-url-1    = {https://osf.io/3djtq},
+  date-added    = {2019-03-01 08:51:52 -0600},
+  date-modified = {2019-03-01 08:51:52 -0600},
+}
+
+@Article{galbraith2019sparse,
+  author    = {Galbraith, James K},
+  title     = {Sparse, Inconsistent and Unreliable: Tax Records and the World Inequality Report 2018},
+  journal   = {Development and Change},
+  year      = {2019},
+  volume    = {50},
+  number    = {2},
+  pages     = {329--346},
+  publisher = {Wiley Online Library},
+}
+
+@TechReport{alvaredo2016distributional,
+  author      = {Alvaredo, Facundo and Atkinson, Anthony and Chancel, Lucas and Piketty, Thomas and Saez, Emmanuel and Zucman, Gabriel and others},
+  title       = {Distributional National Accounts (DINA) guidelines: Concepts and methods used in WID. world},
+  institution = {WID.world},
+  year        = {2016},
+  type        = {Working paper},
+  number      = {2},
+}
+
+@Article{ravallion2014income,
+  author    = {Ravallion, Martin},
+  title     = {Income inequality in the developing world},
+  journal   = {Science},
+  year      = {2014},
+  volume    = {344},
+  number    = {6186},
+  pages     = {851--855},
+  publisher = {American Association for the Advancement of Science},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -1,5 +1,13 @@
 \begin{thebibliography}{}
 
+\bibitem[\protect\citeauthoryear{Alvaredo, Atkinson, Chancel, Piketty, Saez,
+  Zucman, et~al.}{Alvaredo et~al.}{2016}]{alvaredo2016distributional}
+Alvaredo, F., A.~Atkinson, L.~Chancel, T.~Piketty, E.~Saez, G.~Zucman, et~al.
+  (2016).
+\newblock Distributional national accounts (dina) guidelines: Concepts and
+  methods used in wid. world.
+\newblock Working paper~2, WID.world.
+
 \bibitem[\protect\citeauthoryear{Banerjee and Newman}{Banerjee and
   Newman}{1993}]{banerjeenewman1990}
 Banerjee, A.~V. and A.~F. Newman (1993).
@@ -34,6 +42,14 @@ Braun, M., F.~Parro, and P.~Valenzuela (2019).
 Claessens, S. and E.~Perotti (2007).
 \newblock Finance and inequality: Channels and evidence.
 \newblock {\em Journal of comparative Economics\/}~{\em 35\/}(4), 748--773.
+
+
+\bibitem[\protect\citeauthoryear{Dabla-Norris, Kochhar, Suphaphiphat, Ricka,
+  and Tsounta}{Dabla-Norris et~al.}{2015}]{dabla2015causes}
+Dabla-Norris, E., K.~Kochhar, N.~Suphaphiphat, F.~Ricka, and E.~Tsounta (2015).
+\newblock {\em Causes and consequences of income inequality: a global
+  perspective}.
+\newblock International Monetary Fund.
 
 
 \bibitem[\protect\citeauthoryear{Das and Mohapatra}{Das and
@@ -116,12 +132,6 @@ Greenwood, J. and B.~Jovanovic (1990).
 \newblock Financial development, growth, and the distribution of income.
 \newblock {\em Journal of Policical Economy\/}~{\em 98}, 1076--1107.
 
-
-\bibitem[\protect\citeauthoryear{Gwartney, Lawson, and Hall}{Gwartney
-  et~al.}{2017}]{gwartney2017}
-Gwartney, J., R.~A. Lawson, and J.~C. Hall (2017).
-\newblock Economic freedom of the world: 2017 annual report.
-\newblock Technical report, Fraser Institute.
 
 \bibitem[\protect\citeauthoryear{Hamori and Hashiguchi}{Hamori and
   Hashiguchi}{2012}]{hamori2012}
@@ -206,6 +216,12 @@ Roine, J., J.~Vlachos, and D.~Waldenström (2009).
   income data?
 \newblock {\em Journal of Public Economics\/}~{\em 93\/}(7), 974 -- 988.
 
+
+\bibitem[\protect\citeauthoryear{Solt}{Solt}{2019}]{Solt2019}
+Solt, F. (2019, Feb).
+\newblock Measuring income inequality across countries and over time: The
+  standardized world income inequality database.
+\newblock OSF. https://osf.io/3djtq. SWIID Version 8.0, February 2019.
 
 \bibitem[\protect\citeauthoryear{Tan and Law}{Tan and
   Law}{2012}]{tan2012nonlinear}

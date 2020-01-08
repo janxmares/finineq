@@ -10,22 +10,6 @@ library(dilutBMS2)
 library(imputeTS)
 library(here)
 library(dummies)
-library(ineq)
-
-
-
-lines(p,Lc.lognorm(p, parameter=0.5),col="red")
-lines(p,Lc.lognorm(p, parameter=1.0),col="blue")
-lines(p,Lc.lognorm(p, parameter=1.5),col="green")
-
-gini = 1/((2*aplha+0.45)-1)
-
-aplha
-s = sqrt(2)*qnorm((0.56+1)/2)
-alpha = 1/(2*0.56)+1/2
-p = seq(0,1,0.01)
-plot(p,Lc.lognorm(p, parameter=s), type="l", col="brown")
-lines(p,Lc.pareto(p, parameter=alpha), col="blue")
 
 # read data file
 data <- data.table(read.csv(file = here('data_hm.csv'), header = T, stringsAsFactors = F))
@@ -99,7 +83,7 @@ data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","Top10share") 
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
-bma_3y_gini_baseline <- bms(data_dm, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
+bma_3y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
                     nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
