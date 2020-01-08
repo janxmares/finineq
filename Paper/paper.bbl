@@ -1,12 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{Atje and Jovanovic}{Atje and
-  Jovanovic}{1993}]{AtjeJovanovich1993}
-Atje, R. and B.~Jovanovic (1993).
-\newblock Stock markets and development.
-\newblock {\em European Economic Review\/}~{\em 37}, 632--640.
-
-
 \bibitem[\protect\citeauthoryear{Banerjee and Newman}{Banerjee and
   Newman}{1993}]{banerjeenewman1990}
 Banerjee, A.~V. and A.~F. Newman (1993).
@@ -58,15 +51,6 @@ de~Haan, J. and J.-E. Sturm (2017).
 \newblock {\em European Journal of Political Economy\/}~{\em 50}, 171--195.
 
 
-\bibitem[\protect\citeauthoryear{de~Mel, McKenzie, and Woodruff}{de~Mel
-  et~al.}{2008}]{demel2008qje}
-de~Mel, S., D.~McKenzie, and C.~Woodruff (2008, 11).
-\newblock Returns to capital in microenterprises: Evidence from a field
-  experiment.
-\newblock {\em The Quarterly Journal of Economics\/}~{\em 123\/}(4),
-  1329--1372.
-
-
 \bibitem[\protect\citeauthoryear{Delis, Hasan, and Kazakis}{Delis
   et~al.}{2014}]{delis2014}
 Delis, M.~D., I.~Hasan, and P.~Kazakis (2014, 10).
@@ -79,6 +63,14 @@ Delis, M.~D., I.~Hasan, and P.~Kazakis (2014, 10).
 Demirg{\"u}{\c{c}}-Kunt, A. and R.~Levine (2009).
 \newblock Finance and inequality: Theory and evidence.
 \newblock {\em Annu. Rev. Financ. Econ.\/}~{\em 1\/}(1), 287--318.
+
+
+\bibitem[\protect\citeauthoryear{Evans and Jovanovic}{Evans and
+  Jovanovic}{1989}]{evans1989estimated}
+Evans, D.~S. and B.~Jovanovic (1989).
+\newblock An estimated model of entrepreneurial choice under liquidity
+  constraints.
+\newblock {\em Journal of political economy\/}~{\em 97\/}(4), 808--827.
 
 
 \bibitem[\protect\citeauthoryear{Furceri and Ostry}{Furceri and
@@ -96,6 +88,13 @@ Galor, O. and O.~Moav (2004, 10).
 \newblock {\em The Review of Economic Studies\/}~{\em 71\/}(4), 1001--1026.
 
 
+\bibitem[\protect\citeauthoryear{Galor and Zeira}{Galor and
+  Zeira}{1993}]{galorzeira1993income}
+Galor, O. and J.~Zeira (1993).
+\newblock Income distribution and macroeconomics.
+\newblock {\em The review of economic studies\/}~{\em 60\/}(1), 35--52.
+
+
 \bibitem[\protect\citeauthoryear{Gilens and Page}{Gilens and
   Page}{2014}]{gilens_page_2014}
 Gilens, M. and B.~I. Page (2014).
@@ -104,11 +103,11 @@ Gilens, M. and B.~I. Page (2014).
 \newblock {\em Perspectives on Politics\/}~{\em 12\/}(3), 564–581.
 
 
-\bibitem[\protect\citeauthoryear{Glaeser, Scheinkman, and Shleifer}{Glaeser
-  et~al.}{2003}]{glaeseretal2003}
-Glaeser, E., J.~Scheinkman, and A.~Shleifer (2003).
-\newblock The injustice of inequality.
-\newblock {\em Journal of Monetary Economics\/}~{\em 50\/}(1), 199--222.
+\bibitem[\protect\citeauthoryear{Gimet and Lagoarde-Segot}{Gimet and
+  Lagoarde-Segot}{2011}]{gimet2011closer}
+Gimet, C. and T.~Lagoarde-Segot (2011).
+\newblock A closer look at financial development and income distribution.
+\newblock {\em Journal of Banking \& Finance\/}~{\em 35\/}(7), 1698--1713.
 
 
 \bibitem[\protect\citeauthoryear{Greenwood and Jovanovic}{Greenwood and
@@ -124,6 +123,36 @@ Gwartney, J., R.~A. Lawson, and J.~C. Hall (2017).
 \newblock Economic freedom of the world: 2017 annual report.
 \newblock Technical report, Fraser Institute.
 
+\bibitem[\protect\citeauthoryear{Hamori and Hashiguchi}{Hamori and
+  Hashiguchi}{2012}]{hamori2012}
+Hamori, S. and Y.~Hashiguchi (2012).
+\newblock The effect of financial deepening on inequality: Some international
+  evidence.
+\newblock {\em Journal of Asian Economics\/}~{\em 23\/}(4), 353--359.
+
+
+\bibitem[\protect\citeauthoryear{Jauch and Watzka}{Jauch and
+  Watzka}{2016}]{jauch2016financial}
+Jauch, S. and S.~Watzka (2016).
+\newblock Financial development and income inequality: a panel data approach.
+\newblock {\em Empirical Economics\/}~{\em 51\/}(1), 291--314.
+
+
+\bibitem[\protect\citeauthoryear{Jaumotte, Lall, and Papageorgiou}{Jaumotte
+  et~al.}{2013}]{Jaumotte2013}
+Jaumotte, F., S.~Lall, and C.~Papageorgiou (2013, Jun).
+\newblock Rising income inequality: Technology, or trade and financial
+  globalization?
+\newblock {\em IMF Economic Review\/}~{\em 61\/}(2), 271--309.
+
+
+\bibitem[\protect\citeauthoryear{Kim and Lin}{Kim and
+  Lin}{2011}]{kim2011nonlinearity}
+Kim, D.-H. and S.-C. Lin (2011).
+\newblock Nonlinearity in the financial development--income inequality nexus.
+\newblock {\em Journal of Comparative Economics\/}~{\em 39\/}(3), 310--325.
+
+
 \bibitem[\protect\citeauthoryear{Kroszner, Laeven, and Klingebiel}{Kroszner
   et~al.}{2007}]{kroszneretal2007}
 Kroszner, R.~S., L.~Laeven, and D.~Klingebiel (2007).
@@ -131,18 +160,19 @@ Kroszner, R.~S., L.~Laeven, and D.~Klingebiel (2007).
 \newblock {\em Journal of Financial Economics\/}~{\em 84\/}(1), 187--228.
 
 
+\bibitem[\protect\citeauthoryear{Kunieda, Okada, and Shibata}{Kunieda
+  et~al.}{2014}]{kunieda2014finance}
+Kunieda, T., K.~Okada, and A.~Shibata (2014).
+\newblock Finance and inequality: How does globalization change their
+  relationship?
+\newblock {\em Macroeconomic Dynamics\/}~{\em 18\/}(5), 1091--1128.
+
+
 \bibitem[\protect\citeauthoryear{Law and Singh}{Law and
   Singh}{2014}]{LawSingh2014}
 Law, S.~H. and N.~Singh (2014).
 \newblock Does too much finance harm economic growth?
 \newblock {\em Journal of Banking and Finance\/}~{\em 41}, 36--44.
-
-
-\bibitem[\protect\citeauthoryear{Marrero and Rodr{\'\i}guez}{Marrero and
-  Rodr{\'\i}guez}{2013}]{marrero2013inequality}
-Marrero, G.~A. and J.~G. Rodr{\'\i}guez (2013).
-\newblock Inequality of opportunity and growth.
-\newblock {\em Journal of Development Economics\/}~{\em 104}, 107--122.
 
 
 \bibitem[\protect\citeauthoryear{Naceur and Zhang}{Naceur and
@@ -169,20 +199,28 @@ Perotti, E. and P.~Volpin (2007).
 \newblock Investor protection and entry.
 \newblock Technical report, Tinbergen Institute discussion paper.
 
-\bibitem[\protect\citeauthoryear{Piketty and Zucman}{Piketty and
-  Zucman}{2014}]{pikettyandzucman2014}
-Piketty, T. and G.~Zucman (2014).
-\newblock Capital is back: Wealth-income ratios in rich countries 1700--2010.
-\newblock {\em The Quarterly Journal of Economics\/}~{\em 129\/}(3),
-  1255--1310.
-
-
 \bibitem[\protect\citeauthoryear{Roine, Vlachos, and Waldenström}{Roine
   et~al.}{2009}]{roineetal2009}
 Roine, J., J.~Vlachos, and D.~Waldenström (2009).
 \newblock The long-run determinants of inequality: What can we learn from top
   income data?
 \newblock {\em Journal of Public Economics\/}~{\em 93\/}(7), 974 -- 988.
+
+
+\bibitem[\protect\citeauthoryear{Tan and Law}{Tan and
+  Law}{2012}]{tan2012nonlinear}
+Tan, H.-B. and S.-H. Law (2012).
+\newblock Nonlinear dynamics of the finance-inequality nexus in developing
+  countries.
+\newblock {\em The Journal of Economic Inequality\/}~{\em 10\/}(4), 551--563.
+
+
+\bibitem[\protect\citeauthoryear{Townsend and Ueda}{Townsend and
+  Ueda}{2006}]{townsendeueda2006}
+Townsend, R.~M. and K.~Ueda (2006).
+\newblock Financial deepening, inequality, and growth: a model-based
+  quantitative evaluation.
+\newblock {\em The Review of Economic Studies\/}~{\em 73\/}(1), 251--293.
 
 
 \bibitem[\protect\citeauthoryear{Van~der Weide and Milanovic}{Van~der Weide and

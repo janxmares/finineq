@@ -1,4 +1,4 @@
-%!TEX program = xelatex
+%!TEX program = pdflatex
 %!BIB program = bibtex
 
 \documentclass[a4paper,11pt]{article}
@@ -12,11 +12,14 @@
 % \captionsetup[measuredfigure]{labelformat=empty}
 % \usepackage{bm}
 % \usepackage{subcaption}
-%\usepackage{epstopdf} % not supported by xelatex
+\usepackage{epstopdf} % not supported by xelatex
 % \usepackage{fullpage}
 % \usepackage{enumerate}
 \usepackage{authblk}
-\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage{inputenc}
+\usepackage{lmodern}
+% \usepackage{fontspec}
 \usepackage{lscape}
 \usepackage[round]{natbib} %standard package for bibliography
 \usepackage{multirow}
@@ -102,215 +105,186 @@
 
 \section{Introduction}
 % \label{sec:intro}
-Finance captures the capacity of financial intermediaries and markets to screen investment opportunities, monitor the debtors who were provided funding, as well as pooling and management of risk. With inequality, we focus in the paper on the inequality in the distribution of income. Arguably, the literature discusses other concepts of inequality, e.g. intergenerational persistence of relative income differences or equality of opportunity \citep{demirgucc2009finance}.
-
-\section{Related literature}
-% \label{sec:literature}
-The research in the area of financial development and income inequality is well established. \citet{demirgucc2009finance}, \citet{claessens2007finance}, and more recently \cite{de2017finance} provide extensive reviews of the topic. The similar theme emerges in all these papers, with the conclusions from both theoretical and empirical contributions provide conflicting prediction about the relationship and well as not unambiguously conclusive empirical results. Tentative conclusions point towards finance tightening the distribution of income. Among other channels, accessing credit allows human capital accumulation and new firm formation and growth equalize economic opportunities. Furthermore, the indirect effect of finance on labour markets through faster economic growth and increased competition diproportionately benefits the low-income individuals.
-
-Conflicting prediction of finance on inequality - intensive vs. extensive margin. Intergenerational persistence might fall with increased economic oportunities while widening the income distribution in every generation.
-
-DIRECT vs. INDIRECT mechanism - access to finance, expanding opportunities of the previsously disadvantaged groups or intensifying the use of financial services by the incumbent individuals and firms. The financial system having second-order effects on inequality by influencing aggregate production and allocation of credit and consequantly the demand for high- vs. low- skilled workers. \citet{braunetal2019} link growth, inequality, and finance in their theoretical model (access to markets inhibits growth).
-
-\citet{delis2014} bank regulations and inequality - nice intro
-
 % Financial development alters how much are economic opportunities depend on the individual skills, family endowments, social status or political connections. Individual depend on financial system to provide loans to start new business, attain education
 
-Both theoretical and empirical studies leave out the issue of importing the financial services from abroad. We include financial globalization from KOF among our control variables.
+Finance captures the capacity of financial intermediaries and markets to screen investment opportunities, monitor the debtors who were provided funding, as well as pooling and management of risk. With inequality, we focus in the paper on the inequality in the distribution of income. Arguably, the literature discusses other concepts of inequality, e.g. intergenerational persistence of relative income differences or equality of opportunity \citep{demirgucc2009finance}.
 
-
-\citet{pikettyandzucman2014}
-\citet{van2018inequality} provide evidence that income inequality in the \ac{us} has different implications for the future income growth of the rich and the poor. High inequality seems to hurt the prospects of the poor while the top of the distribution is unaffected. The rich thus disproportianately benefit from higher inequality as their subsequent income exhibit faster growth. The authors attribute this effect to the political channel the rich use to lobby in favour of the policies which support their economic interests. Preferences of the rich are ultimately more likely to determine public policy than the preferences of the majority \citep{gilens_page_2014}. High inequality together with a credit constraint and rich driving the political process results in low government spending and lasting inequality.
-
-\citet{marrero2013inequality} introduce two types of inequality - inequality of opportunity and inequality of effort/luck. Applying this to the EU countries and US states, they show that inequality of opportunity (driven by race and parental education ...) is negatively related to growth while the residual "good" inequality is growth inducing.
-
-Income inequality and growth may intersect through varying channels. Accumulation of savings, unobservable effort, and investment project size favour the prediction on growth inducing inequality. Negative impact of inequality on human capital accumulation, entrepreneurial activity, and hence growth provides argument for the opposing view.
+\citet{claessens2007finance} argue that although deeper financial systems generally provide better opportunities of access to finance, the relationship is not universal.
 
 The average income inequality rose across \ac{oecd} by 1.4 percentage points \citep{oecd2013crisis}.
 
-\citet{LawSingh2014} argue that financial development decrease income inequality by allowing the poor to invest in human and physical capital.
+\section{Related literature}
+% \label{sec:literature}
+The research in the area of financial development and income inequality is well established. \citet{demirgucc2009finance}, \citet{claessens2007finance}, and more recently \cite{de2017finance} provide extensive reviews of the topic. A similar theme emerges in all three papers. The implications from theoretical contributions provide conflicting predictions about the relationship and empirical results bring evidence for both positive and negative effect. Although majority of the papers point towards finance tightening the distribution of income this results is not universal with some papers suggesting the opposite while other stress potential non-linearities.
+
+A key divide appears between the effect of financial develpoment on extenstive and intensive margin. The extensive margin captures the extend to which individuals, who had not been using financial services before, gain access. On the other hand, the intensive margin describes growing use of finance by the agents who had already been using it before \citep{demirgucc2009finance}. Financial development on the extensive margin might lead to more equal opportunities and outcomes. Access to credit by previously disadvantaged groups allows human capital accumulation \citep{galorzeira1993income, galormoav2004, braunetal2019}, formation and growth of new firms \citep{evans1989estimated,banerjeenewman1990}, with more evenly distributed economic opportunities as a result\footnote{Having similar economic opportunities might decrease the cross-generational inequality, by diminishing the effect of e.g. parental wealth. Depending on the innate abilities and talents of the individuals, however, it may increase the inequality of income within every generation at the same time.}.
+
+On the contrary, intensive margin of financial development might disproportionately benefit the rich who may leverage financial services for their further benefit or to protect their existing rents. \citet{GreenwoodJovanovic1990} present a model where the finance is the key driver of inequality and the welfare gains accrued by the incumbents - primarily the rich - in the initial development stage. With time, more agents meet the fixed costs of joining the financial intermediaries and they enjoy higher returns. Consequently, the efficiency of resource allocation also increases, which enhances growth and reduces inequality. \citet{perotti2007investor} present a framework based on politcal economy. They argument depends on a lobby for lower investor protection to prevent entrance of the new competitors. The politicians require higher bribe from the lobbyist the greater is their accountability for policy decisions. Thus, with increasing accountability, investor protection strengthens and spurs market entry and competition. The authors examine their prediction in a cross-section and show that better investor protection correlates with larger entry rates and higher firm density in more financially intensive sectors\footnote{In addition, they show that the most important factor of accountability is not the formal measure of democratic institutions, but \emph{newspaper readership} which they interpret as broad awareness of policy choices and their outcomes.}. 
+
+Financial development may also have indirect effect on income inequality through economic growth. \citet{townsendeueda2006} model how finance interacts with production and allocation of credit. If increased use of finance increases the demand for low- relatively to the high-skilled workers, then it may have equalizing consequences for income distribution. Empirical evidence by \citet{beck2010big} show that bank deregulation and increased competition in loan provision in the \ac{us} primarily benefited the workers with income below the median. Similarly, \citet{delis2014} provide evidence of bank deregulation and liberalization tightening the income distribution, although this effect is only present in countries with high-quality institutions. They attribute the effect to the changes in labour market conditions and relatively higher wages and working hours of the low-skilled workers following the reforms. 
+
+A set of distinct papers explores the relationship between inequality and growth while stressing financial markest imperfections driving the outcomes. Income inequality and growth may intersect through varying channels. Accumulation of savings, unobservable effort, and investment project size favour the prediction of growth inducing inequality. Negative impact of inequality on human capital accumulation, entrepreneurial activity provide argument for the opposing view. 
+\citet{van2018inequality} report how income inequality in the \ac{us} has different implications for the future income growth of the rich and the poor. High inequality seems to hurt the prospects of the poor while the top of the distribution is unaffected. The rich thus disproportianately benefit from higher inequality as their subsequent income exhibit faster growth. The authors attribute this effect to the political channel the rich use to lobby in favour of the policies which support their economic interests. Preferences of the rich are ultimately more likely to determine public policy than the preferences of the majority \citep{gilens_page_2014}. High inequality together with a credit constraint and rich driving the political process results in low government spending and lasting inequality.
+
+The literature does not converge on the conclusions even in the empirical cross-country and panel data studies. The papers link higher levels of financial development with lower levels of inequality \citep{beck2007finance, hamori2012, gimet2011closer, kunieda2014finance}\footnote{For an extended list, we refer to \citet{de2017finance}.}. On the other hand, several other estimate a growth inducing effect of finance \citep{Jaumotte2013, jauch2016financial, de2017finance}. Finally, some authors claim there the relationship might be non-linear, conditional on a threshold value of financial development \citep{kim2011nonlinearity,tan2012nonlinear} or institutional quality \citep{LawSingh2014, delis2014}.
+
+Three papers are the closest to ours, each in a different respect. First, \citet{de2017finance} examine different dimensions of finance on income inequality. Their results suggest that financial development, financial liberalization, and banking crises all increase pre-tax income inequality within countries. Additionally, they show that the effect of financial liberalization is conditional on democratic accountability. Higher accountability mitigates the impact of liberalization on inequality. On the contrary, the financial development, proxied by the credit to GDP ratio, has inequality increasing effect irrespective of the institutional background. Second, \citet{naceurzhang2016} take similar approach in considering multiple dimensions --- the access, efficiency, and stability of the financial sector, although not examining the indicators simultaneously.  Third, \citet{furceri2019robust} apply \ac{wals} to identify robust determinants of income inequality. Their approach mirrors ours in accounting for model uncertainty in the estimation. Their focus is more general rather than focused primarily on finance. We provide synthesis and extension to these papers in providing more detailed view on the link between finance in shaping income inequality and examining multiple measures of inequality while specifically identifying the determinants of top income shares along with the determinants of the overall income distribution\footnote{Captured by income Gini index}.
+
+% An exemption from focus solely on the size of financial sector is the study by \citet{naceurzhang2016} which applies a similar approach to ours, taking into consideration the access, efficiency, and stability of the financial sector. However, there are severe limitation to their study. First, their coverarage does not correspond to the availability of the data. Second, they do not account for the different dimensions of finance simultaneously and always use a single indicator of development at a time. Third, they do not explicitly differentiate between the banking sector and financial markets. We provide a more detailed as well as more robust picture of the financial development effect on finance in these dimensions.
+
+% \citet{de2017finance} examine different dimensions of finance on income inequality. Their results suggest that financial development, financial liberalization, and banking crises all increase market income inequality within countries. Additionally, they show that the effect of financial liberalization is conditional on democratic accountability. The higher the accountability, the less severe is the negative impact of liberalization on inequality. On the contrary, the financial development, proxied by the credit to GDP ratio, has inequality increasing effect irrespective of the institutional background.
+
+% \citet{furceri2019robust} apply WALS to identify robust determinants of income inequality. They are the closest paper to ours since they account for model uncertainty in the estimation. Their focus if more general rathar than on finance specifically. Out work offers more detailed contribution in terms of the role of finance in shaping income inequality. On the top of that, we differ from their analysis by examining multiple measures of inequality and specifically identifying the determinants of top income shares along with the determinants of the overall income distribution represented by income Gini index. We provide further evidence in all these dimensions.
+
+%
+%
+%
+%
+%
+
+\section{Data}
+\cite{roineetal2009}, \citet{furceri2019robust} for the determinants of income inequality.
 
 \citet{nolan2019drivers} bring a survey of the literature on determinants of inequality, summarizing the complexity of the inequality dynamics. They stress that many of the determinants are interlinked which implies difficulty in assigning precise effects to individual drivers of inequality. Additionally, they encourage complementary individual country case studies to support the finding of the general cross-country estimates.
 
-\subsection{theory}
-\textsc{human capital investment} - with imperfect markets restrict the capital accumulation, differences between human (optimal is equal distribution) and physical capital (diminishin returns to physical capital do not materialize at the level of individual ownership of capital because it is not embodies in individuals \cite{demirgucc2009finance}. This implies that equal distribution is not necessarily optimal). \textsc{political consequences} - higher inequality will increase the proportion of population favouring greater redistribution.  \textsc{wage discrimination by specific characteristics, e. g. race}
-%
-\textsc{investment opportunities, savings}. Minimum investment requirements of fixed costs associated with high-return investments, including entrepreneurship. => higher return to wealthier individuals (e.g. \citet{AtjeJovanovich1993,demel2008qje}).
-\textsc{savings behaviour} - if inheritance is a function on income, then rich parents leave larger bequests than the poor and preserve relative differences in incomes. Research indicates that financial development does not alter aggregate savings rates. Is this also valid for more detailed look on poor and rich households? If the effect differs then the distribution of saving is altered by financial development influence the relative income levels across households while keeping the aggregate savings rate unchanged.
-
-\textsc{Summary} 
-
-\citet{galormoav2004} provide a theoretical framework of thinking about the link between income inequality and financial development. In their model, the income inequality falls due to the decrease of financial friction which allows for physical and human capital accumulation of the poor. That is the extensive margin of financial development at work.
-
-\citet{banerjeenewman1990} also offer a theoretical setup in favour of the capital accumulation hypothesis due to finance (liberalization as claimed by \citet{de2017finance}) and inequality decreasing effect.
-
-\citet{GreenwoodJovanovic1990} on the contrary present a model where the intensive margin of the financial development is the key force and the benefits of more finance are accrued by the incumbents - primarily the rich - which implies an inequality increasing effect in the early stages of the development. With tim more agents meet the fixed costs of joining the financial intermediaries and they enjoy higher returns. The efficiency of resource allocation increases, which enhances growth and reduces inequality.
-
-An exemption from focus solely on the size of financial sector is the study by \citet{naceurzhang2016} which applies a similar approach to ours, taking into consideration the access, efficiency, and stability of the financial sector. However, there are severe limitation to their study. First, their coverarage does not correspond to the availability of the data. Second, they do not account for the different dimensions of finance simultaneously and always use a single indicator of development at a time. Third, they do not explicitly differentiate between the banking sector and financial markets. We provide a more detailed as well as more robust picture of the financial development effect on finance in these dimensions.
-
 \citet{gwartney2017} provide an economic freedom index of the Fraser Institute.
 
-\citet{de2017finance} examine different dimensions of finance on income inequality. Their results suggest that financial development, financial liberalization, and banking crises all increase market income inequality within countries. Additionally, they show that the effect of financial liberalization is conditional on democratic accountability. The higher the accountability, the less severe is the negative impact of liberalization on inequality. On the contrary, the financial development, proxied by the credit to GDP ratio, has inequality increasing effect irrespective of the institutional background.
+Both theoretical and empirical studies leave out the issue of importing the financial services from abroad. We include financial globalization from KOF among our control variables.
 
-\citet{claessens2007finance} explore the connectedness of growth, finance, and inequality, stressing the importance of institutional background in the effects.  
+% % \label{sec:data}
+% \begin{figure}
+%     \caption{Gini Coefficient and Efficiency of Financial Institutions}
+%     \label{fig:ginifie}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FIEGiniNet}
+% \end{figure}
 
-\citet{perotti2007investor} present a theoretical framework how established interests lobby for lower investor protection to prevent entrance of the new competitors. Greater accountability of the politicians leads to a higher bribe required from the lobbyists'. Investor protection strengthens and increases market entry and competition. They examine their prediction in a cross-section and show that better investor protection correlates with larger entry rates and higher firm density in more financially intensive sectors. Furthermore, they show that the most important factor of accountability is not the formal measure of democratic institutions, but \emph{newspaper readership} which they interpret as broad awareness of policy choices and their outcomes. \textsc{size does not matter for entry when investor protection is accounted for}.
+% \begin{figure}
+%     \caption{Gini Coefficient and Access to Financial Institutions}
+%     \label{fig:ginifia}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FIAGiniNet}
+% \end{figure}
 
-Summary of the theoretical preditions in \citet{demirgucc2009finance} on pages 20-23 for the review.
+% \begin{figure}
+%     \caption{Gini Coefficient and Depth of Financial Institutions}
+%     \label{fig:ginifid}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FIDGiniNet}
+% \end{figure}
 
-\citet{furceri2019robust} apply \ac{wals} to identify robust determinants of income inequality. They are the closest paper to ours since they account for model uncertainty in the estimation. Their focus if more general rathar than on finance specifically. Out work offers more detailed contribution in terms of the role of finance in shaping income inequality. On the top of that, we differ from their analysis by examining multiple measures of inequality and specifically identifying the determinants of top income shares along with the determinants of the overall income distribution represented by income Gini index. We provide further evidence in all these dimensions.
+% \begin{figure}
+%     \caption{Gini Coefficient and Depth of Financial Markets}
+%     \label{fig:ginifmd}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FMDGiniNet}
+% \end{figure}
 
-\subsection{empirics}
-\citet{beck2007finance} show that the development of financial intermediaries is accompanied by faster reductions in income inquality and poverty rates.
-\citet{beck2010big} document how bank deregulation in the \ac{us} tightened income distribution by benefiting primarily the bottom 50\% of earners. They attribute the effect to the changes in labour market conditions and relatively higher wages and working hours of the low-skilled workers following the reforms.
+% \begin{figure}
+%     \caption{Gini Coefficient and Government Expenditures}
+%     \label{fig:ginigovexp}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/GovExpGiniNet}
+% \end{figure}
 
-\citet{claessens2007finance} argue that althugh the deeper financial systems generally provide better opportunities of access to finance, the relationship is not universal.
+% \begin{figure}
+%     \caption{Gini Coefficient and Mortality}
+%     \label{fig:ginimort}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/MortGiniNet}
+% \end{figure}
 
-The benefits of capital markets liberalization seem to be concetrated to the top of the income distribution. Top quintile of the distribution accrues nearly all of the income growth following the liberalization while the share of middle three quantiles decreases and the bottom remains unaffected \citep{das2003income}.
+% \begin{figure}
+%     \caption{Gini Coefficient and \ac{gdp} per capita}
+%     \label{fig:ginigdp}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/GDPGiniNet}
+% \end{figure}
 
-Diwan (1999) show how labour shares fall follwing a crises only partially recovering in the subsequent years.
+% \begin{figure}
+%     \caption{Gini Coefficient and Rule of Law}
+%     \label{fig:ginirule}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/RuleLawGiniNet}
+% \end{figure}
 
-\citet{kroszneretal2007} show that financial crises have relative more severe impact on the sectors which depend more on external financing. The consequences of crises on firms relate to institutional environment and materialize through lower production capacity and competition.
+% \begin{figure}
+%     \caption{Gini Coefficient and Inflation}
+%     \label{fig:giniinfl}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/InflGiniNet}
+% \end{figure}
 
-\citet{glaeseretal2003} model intitutional subversion by the rich classes and their ability to prevent institutional reforms. Such environment often leads to massive redistribution from the rich to the poor, which is assumed to be less efficient than carefully implemented institutional reforms.
+% \begin{figure}
+%     \caption{Gini Coefficient and Equipment Investment}
+%     \label{fig:giniequipi}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/EquipIGiniNet}
+% \end{figure}
 
-\section{Data}
-\cite{roineetal2009}, \citet{nolan2019drivers}, \citet{furceri2019robust} for the determinants of income inequality.
+% \begin{figure}
+%     \caption{Gini Coefficient and Trade Openness}
+%     \label{fig:ginitrade}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/TradeOpenGiniNet}
+% \end{figure}
 
-% \label{sec:data}
-\begin{figure}
-    \caption{Gini Coefficient and Efficiency of Financial Institutions}
-    \label{fig:ginifie}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FIEGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Financial Development Indicators}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Access to Financial Institutions}
-    \label{fig:ginifia}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FIAGiniNet}
-\end{figure}
+% %
+% %
 
-\begin{figure}
-    \caption{Gini Coefficient and Depth of Financial Institutions}
-    \label{fig:ginifid}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FIDGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Efficiency of Financial Institutions}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FIEGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Depth of Financial Markets}
-    \label{fig:ginifmd}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FMDGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Access to Financial Institutions}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FIAGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Government Expenditures}
-    \label{fig:ginigovexp}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/GovExpGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Depth of Financial Institutions}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FIDGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Mortality}
-    \label{fig:ginimort}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/MortGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Depth of Financial Markets}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/FMDGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and \ac{gdp} per capita}
-    \label{fig:ginigdp}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/GDPGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Government Expenditures}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/GovExpGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Rule of Law}
-    \label{fig:ginirule}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/RuleLawGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Mortality}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/MortGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Inflation}
-    \label{fig:giniinfl}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/InflGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and \ac{gdp} per capita}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/GDPGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Equipment Investment}
-    \label{fig:giniequipi}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/EquipIGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Rule of Law}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/RuleLawGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Trade Openness}
-    \label{fig:ginitrade}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/TradeOpenGiniNet}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Inflation}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/InflGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Financial Development Indicators}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Equipment Investment}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/EquipIGiniNet_dm}
+% \end{figure}
 
-%
-%
+% \begin{figure}
+%     \caption{Gini Coefficient and Trade Openness}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/TradeOpenGiniNet_dm}
+% \end{figure}
 
-\begin{figure}
-    \caption{Gini Coefficient and Efficiency of Financial Institutions}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FIEGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Access to Financial Institutions}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FIAGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Depth of Financial Institutions}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FIDGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Depth of Financial Markets}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/FMDGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Government Expenditures}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/GovExpGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Mortality}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/MortGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and \ac{gdp} per capita}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/GDPGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Rule of Law}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/RuleLawGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Inflation}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/InflGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Equipment Investment}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/EquipIGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Trade Openness}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/TradeOpenGiniNet_dm}
-\end{figure}
-
-\begin{figure}
-    \caption{Gini Coefficient and Financial Development Indicators}
-\includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini_dm}
-\end{figure}
+% \begin{figure}
+%     \caption{Gini Coefficient and Financial Development Indicators}
+% \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini_dm}
+% \end{figure}
 
 %
 %
@@ -319,7 +293,9 @@ Diwan (1999) show how labour shares fall follwing a crises only partially recove
 
 \section{Results}
 % \label{sec:results}
+The benefits of capital markets liberalization seem to be concetrated to the top of the income distribution. Top quintile of the distribution accrues nearly all of the income growth following the liberalization while the share of middle three quantiles decreases and the bottom remains unaffected \citep{das2003income}.
 
+\citet{kroszneretal2007} show that financial crises have relative more severe impact on the sectors which depend more on external financing. The consequences of crises on firms relate to institutional environment and materialize through lower production capacity and competition.
 % \label{sec:conclusion}
 
 \clearpage

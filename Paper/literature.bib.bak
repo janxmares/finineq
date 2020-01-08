@@ -2801,4 +2801,91 @@ This paper develops a meta-analysis of the empirical literature that estimates t
   publisher = {Cambridge University Press},
 }
 
+@Article{townsendeueda2006,
+  author    = {Townsend, Robert M and Ueda, Kenichi},
+  title     = {Financial deepening, inequality, and growth: a model-based quantitative evaluation},
+  journal   = {The Review of Economic Studies},
+  year      = {2006},
+  volume    = {73},
+  number    = {1},
+  pages     = {251--293},
+  publisher = {Wiley-Blackwell},
+}
+
+@Article{evans1989estimated,
+  author    = {Evans, David S and Jovanovic, Boyan},
+  title     = {An estimated model of entrepreneurial choice under liquidity constraints},
+  journal   = {Journal of political economy},
+  year      = {1989},
+  volume    = {97},
+  number    = {4},
+  pages     = {808--827},
+  publisher = {The University of Chicago Press},
+}
+
+@Article{galorzeira1993income,
+  author    = {Galor, Oded and Zeira, Joseph},
+  title     = {Income distribution and macroeconomics},
+  journal   = {The review of economic studies},
+  year      = {1993},
+  volume    = {60},
+  number    = {1},
+  pages     = {35--52},
+  publisher = {Wiley-Blackwell},
+}
+
+@Article{Jeong2007,
+  author   = {Jeong, Hyeok and Townsend, Robert M.},
+  title    = {Sources of TFP growth: occupational choice and financial deepening},
+  journal  = {Economic Theory},
+  year     = {2007},
+  volume   = {32},
+  number   = {1},
+  pages    = {179--221},
+  month    = {Jul},
+  issn     = {1432-0479},
+  abstract = {This paper explains and measures the sources of total factor productivity (TFP) by developing a method of growth accounting based on an integrated use of transitional growth models and micro data. We decompose TFP growth into the occupational-shift effect, financial-deepening effect, capital-heterogeneity effect, and sectoral-Solow-residuals. Applying this method to Thailand, which experienced rapid growth with enormous structural changes between 1976 and 1996, we find that 73{\%} of TFP growth is explained by occupational shifts and financial deepening, without presuming exogenous technical progress. Expansion of credit is a major part. We also show the role of endogenous interaction between factor price dynamics and the wealth distribution for TFP.},
+  day      = {01},
+  doi      = {10.1007/s00199-006-0201-8},
+  url      = {https://doi.org/10.1007/s00199-006-0201-8},
+}
+
+@Article{Jaumotte2013,
+  author   = {Jaumotte, Florence and Lall, Subir and Papageorgiou, Chris},
+  title    = {Rising Income Inequality: Technology, or Trade and Financial Globalization?},
+  journal  = {IMF Economic Review},
+  year     = {2013},
+  volume   = {61},
+  number   = {2},
+  pages    = {271--309},
+  month    = {Jun},
+  issn     = {2041-417X},
+  abstract = {The paper examines the relationship between the rapid pace of trade and financial globalization and the rise in income inequality observed in most countries over the past two decades. Using a newly compiled panel of 51 countries over a 23-year period from 1981 to 2003, the paper reports estimates that support a greater impact of technological progress than globalization on inequality. The limited overall impact of globalization reflects two offsetting tendencies: whereas trade globalization is associated with a reduction in inequality, financial globalization---and foreign direct investment in particular---is associated with an increase in inequality.},
+  day      = {01},
+  doi      = {10.1057/imfer.2013.7},
+  url      = {https://doi.org/10.1057/imfer.2013.7},
+}
+
+@Article{jauch2016financial,
+  author    = {Jauch, Sebastian and Watzka, Sebastian},
+  title     = {Financial development and income inequality: a panel data approach},
+  journal   = {Empirical Economics},
+  year      = {2016},
+  volume    = {51},
+  number    = {1},
+  pages     = {291--314},
+  publisher = {Springer},
+}
+
+@Article{tan2012nonlinear,
+  author    = {Tan, Hui-Boon and Law, Siong-Hook},
+  title     = {Nonlinear dynamics of the finance-inequality nexus in developing countries},
+  journal   = {The Journal of Economic Inequality},
+  year      = {2012},
+  volume    = {10},
+  number    = {4},
+  pages     = {551--563},
+  publisher = {Springer},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
