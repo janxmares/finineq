@@ -27,13 +27,13 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{colortbl} % color table
 \usepackage{geometry}
-% \usepackage{hyperref} %hyperlink support
-% \hypersetup{pdfstartview={XYZ null null 1.00},bookmarksnumbered, hypertexnames=false, colorlinks=true, linkcolor=BrickRed, citecolor=MidnightBlue, urlcolor=MidnightBlue} % zoom: default screen; numbers for bookmarks
+\usepackage{hyperref} %hyperlink support  
+\hypersetup{colorlinks=false, breaklinks=false, unicode, linkcolor=black, urlcolor=black, pdfborder={0 0 0}, anchorcolor=black, citecolor=black, pdfstartview={}}
 
 %
 %
 %\usepackage{parskip}
-\usepackage[nolist]{acronym}
+\usepackage[printonlyused]{acronym}
 \usepackage{longtable}
 \usepackage{setspace}
 
@@ -46,6 +46,11 @@
 \acrodef{efw}[EFW]{Economic Freedom of the World}
 \acrodef{fdi}[FDI]{Foreign Direct Investment}
 \acrodefplural{fdi}[FDIs]{Foreign Direct Investments}
+\acrodef{FIA}{Access to Financial Institutions}
+\acrodef{FID}{Financial Institutions Depth}
+\acrodef{FIE}{Financial Institutions Efficiency}
+\acrodef{FMD}{Financial Markets Depth}
+\acrodef{FME}{Financial Markets Efficiency}
 \acrodef{gdp}[GDP]{Gross Domestic Product}
 \acrodef{gfdd}[GFDD]{Global Financial Development Database}
 \acrodef{hbs}[HBS]{Household Balance Sheet}
@@ -55,15 +60,15 @@
 \acrodef{pip}[PIP]{Posterior Inclusion Probability}
 \acrodefplural{pip}[PIPs]{Posterior Inclusion Probabilities}
 \acrodef{pmp}[PMP]{Posterior Model Probability}
+\acrodef{PWT}{Penn World Table}
 \acrodef{swiid}[SWIID]{Standardized World Income Inequality Database}
 \acrodef{uip}[UIP]{Unit Information Prior}
 \acrodef{uk}[UK]{United Kingdom}
 \acrodef{us}[US]{United States}
 \acrodef{wals}[WALS]{Weighted-average Least Squares}
-\acrodef{wb}[WB]{World Bank}
+\acrodef{WB}[WB]{World Bank}
 \acrodef{wid}[WID]{World Inequality Database}
 \acrodef{wiid}[WIID]{World Income Inequality Database}
-
 
 %
 %
@@ -172,29 +177,29 @@ Table \ref{tab:ineq} report the summary statistics and correlations between the 
     \end{tabular}
 \end{table}
 
-We obtain the financial development indicators from \ac{gfdd}. The database offers detailed indicators along four dimensions of financial systems and allows to estimate the affect of changes in access, size, efficiency, and stability of financial markets. Furthermore, we can distinguish between banking sector and financial markets in all these dimensions. The data in for access and stability of financial markets remains sparse in the concerned period we must leave them out of analysis. We use the version of financial indicators from \cite{svirydzenka2016introducing}. The authors make use of principal component analysis in order to construct aggregate indicators in each characteristic of financial sector. In summary, we have indicators of financial institutions depth (FID), financial markets depth (FMD), access to financial institutions (FIA), efficiency of financial markets (FME), and institutions (FIE)\footnote{\citet{svirydzenka2016introducing} extrapolate the indicators from top to bottom if the original variables are unavailable, we make sure that that at least one variable is available for the construction of the index and no artificial correlation introduced to the data.}. We report the composition of each indicator in Table \ref{tab:finind}. 
+We obtain the financial development indicators from \ac{gfdd}. The database offers detailed indicators along four dimensions of financial systems and allows to estimate the affect of changes in access, size, efficiency, and stability of financial markets. Furthermore, we can distinguish between banking sector and financial markets in all these dimensions. The data in for access and stability of stock markets remains sparse in the concerned period we must leave them out of analysis. We use the version of financial indicators from \cite{svirydzenka2016introducing}. The authors make use of principal component analysis in order to construct aggregate indicators in each characteristic of financial sector. In summary, we have indicators of financial institutions depth (FID), financial markets depth (FMD), access to financial institutions (FIA), efficiency of financial markets (FME), and institutions (FIE)\footnote{\citet{svirydzenka2016introducing} extrapolate the indicators from top to bottom if the original variables are unavailable, we make sure that that at least one variable is available for the construction of the index and no artificial correlation introduced to the data.}. We report the composition of each indicator in Table \ref{tab:finind}. 
 
 \begin{figure}
+    \caption{Gini Coefficient and Financial Development Indicators}
     \label{fig:gini_findev}
-        \caption{Gini Coefficient and Financial Development Indicators}
     \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini}
-    \end{figure}
-    
-Figure \ref{fig:gini_findev} shows the scatter plots between Gini coefficient and selected financial indicators.
+\end{figure}
 
-We build the choice of other explanatory variables on a reviews of income inequality drivers \citep{roineetal2009,nolan2019drivers}, related study of finance-inequality nexus \citep{de2017finance}, and a more general inquiry into the robust determinants of income inequality \citep{furceri2019robust}. Table \ref{app:exog} reports all the control variables and their sources. 
+\begin{figure}
+    \caption{Gini Coefficient and Financial Development Indicators}
+    \label{fig:gini_findev_dm}
+    \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini_dm}
+\end{figure}
 
-Specify the main categories of controls in the previous paragraph (based on Nolan + Furceri).
+Figure \ref{fig:gini_findev} shows the scatter plots of all the available observations after averaging between Gini coefficient and selected financial indicators. Although the data is noisy, it suggest negative correlation between the variables. Figure \ref{fig:gini_findev_dm} then shows the corresponding scatter plots of the data which was demeaned using the within country averages over time. The relationship between Gini and financial indicators appears considerably weaker following the transformation, with the exception of access to financial institutions where visual inspection allows pointing to a negative correlation.
+
+ 
+We build the choice of other explanatory variables on a reviews of income inequality drivers \citep{roineetal2009,nolan2019drivers}, related study of finance-inequality nexus \citep{de2017finance}, and a more general inquiry into the robust determinants of income inequality \citep{furceri2019robust}. The potential regressors could be categorized in several groups. They control for economic and financial development, demographics, globalization, and institutional background. Table \ref{app:exog} reports all the control variables and their sources. 
 
 % \citet{nolan2019drivers} bring a survey of the literature on determinants of inequality, summarizing the complexity of the inequality dynamics. They stress that many of the determinants are interlinked which implies difficulty in assigning precise effects to individual drivers of inequality. Additionally, they encourage complementary individual country case studies to support the finding of the general cross-country estimates.
 
 % Both theoretical and empirical studies leave out the issue of importing the financial services from abroad. We include financial globalization from KOF among our control variables.
 
-\begin{figure}
-    \label{fig:gini_findev_dm}
-        \caption{Gini Coefficient and Financial Development Indicators}
-    \includegraphics[width=\textwidth, keepaspectratio]{figures/plots_findev_gini_dm}
-    \end{figure}
 
 % % \label{sec:data}
 % \begin{figure}
@@ -349,8 +354,14 @@ The benefits of capital markets liberalization seem to be concentrated to the to
 %
 % \appendix
 \section{Appendix}
-\label{sec:app}
+\label{sec:appch2}
+\renewcommand{\thesection}{A\arabic{section}}%
+\renewcommand{\thetable}{A\arabic{table}}%
+\renewcommand{\thefigure}{A\arabic{figure}}%
+\renewcommand{\theequation}{A\arabic{eq}} 
 
+\subsection*{The composition of financial indicators}
+\label{subsec:finind_comp}
 \begin{table}[ht!]
     \small
     \caption{Underlying Components of Financial Development Indicators}
@@ -388,13 +399,63 @@ The benefits of capital markets liberalization seem to be concentrated to the to
       \midrule
       Efficiency                  & Stock market turnover ratio (stocks traded/capitalization) \\
       \bottomrule
-\end{tabular}
+    \end{tabular}
 \end{table}
 
-
-\renewcommand{\thesection}{A\arabic{section}}%
-\renewcommand{\thetable}{A\arabic{table}}%
-\renewcommand{\thefigure}{A\arabic{figure}}%
-\renewcommand{\theequation}{A\arabic{eq}} 
+\clearpage
+\subsection*{Dataset description}
+\begin{center}
+\footnotesize
+\begin{longtable}{l p{0.50\linewidth} p{0.3\linewidth}}
+    \caption{List of variables}
+    \label{app:exog} \\
+    \toprule 
+  Variable & Definition (+ optional comments) & Source \\
+    \midrule 
+  GiniNet & After\-tax Gini index based on distribution of income (The Standardized World Income Inequality Database). & \href{http://fsolt.org/swiid/}{Solt (2019)} \\
+  GiniMarket & Before-tax Gini index based on distribution of income  (The Standardized World Income Inequality Database). & \href{http://fsolt.org/swiid/}{Solt (2019)} \\	
+  Top10share & Share of income going top decile of the distribution. & \href{https://wid.world/}{WID} \\	
+  Top1share & Share of income going top percentile of the distribution. & \href{https://wid.world/}{WID} \\
+  FIA & Access to financial institutions & \href{http://data.imf.org/?sk=F8032E80-B36C-43B1-AC26-493C5B1CD33B}{\citet{svirydzenka2016introducing}} \\
+  FID & Financial institutions depth & \href{http://data.imf.org/?sk=F8032E80-B36C-43B1-AC26-493C5B1CD33B}{\citet{svirydzenka2016introducing}} \\
+  FIE & Financial institutions efficiency & \href{http://data.imf.org/?sk=F8032E80-B36C-43B1-AC26-493C5B1CD33B}{\citet{svirydzenka2016introducing}} \\
+  FMD & Financial markets depth & \href{http://data.imf.org/?sk=F8032E80-B36C-43B1-AC26-493C5B1CD33B}{\citet{svirydzenka2016introducing}} \\
+  FME & Financial markets efficiency & \href{http://data.imf.org/?sk=F8032E80-B36C-43B1-AC26-493C5B1CD33B}{\citet{svirydzenka2016introducing}} \\
+  GDPpc & Level of GDP per capita & \href{http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD}{WB} \\
+  NatRes & Total natural resource rents are the sum of oil rents, natural gas rents, coal rents (hard and soft), mineral rents, and forest rents. & \href{http://data.worldbank.org/indicator/NY.GDP.TOTL.RT.ZS}{WB} \\
+  PopGrowth & Annual population growth 1980-2009 & \href{http://data.worldbank.org/indicator/SP.POP.GROW}{WB} \\
+  GovExp & General government final consumption expenditure (formerly general government consumption). & \href{http://data.worldbank.org/indicator/NE.CON.GOVT.ZS}{WB}\\
+  NNSavings & Net national savings (gross national savings less the value of consumption of fixed capital, \% GNI). & \href{http://data.worldbank.org/indicator/NY.ADJ.NNAT.GN.ZS}{WB} \\
+  EducExp & Education expenditure refers to the current operating expenditures in education, including wages and salaries and excluding capital investments in buildings and equipment.. & \href{http://data.worldbank.org/indicator/NY.ADJ.AEDU.GN.ZS}{WB} \\
+  Infl & Inflation as measured by the consumer price index. & \href{http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG}{WB} \\
+  VAA & Agriculture, forestry, and fishing value added (\% GDP). & \href{http://data.worldbank.org/indicator/NV.AGR.TOTL.ZS}{WB} \\
+  VAI & Industry value added (\% GDP). & \href{http://data.worldbank.org/indicator/NV.IND.TOTL.ZS}{WB} \\
+  GFCF & Gross fixed capital formation (\% of GDP). & \href{http://data.worldbank.org/indicator/NE.GDI.FTOT.ZS}{WB} \\
+  NetFDI &  Foreign direct investment, net inflows (\% of GDP). & \href{http://data.worldbank.org/indicator/BX.KLT.DINV.WD.GD.ZS}{WB} \\
+  GDPgrowth & Annual growth of GDP. & \href{http://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG}{WB} \\
+  LifeExp & Life expectancy at birth.  & \href{http://data.worldbank.org/indicator/SP.DYN.LE00.IN}{WB}\\
+  LabForce & Total labor force comprises people ages 15 and older who meet the International Labor Organization definition of the economically active population: all people who supply labor for the production of goods and services during a specified period. Labor force total. & \href{http://data.worldbank.org/indicator/SL.TLF.CACT.ZS}{WB} \\
+%   PopDens & Population density (people per sq. km of land area). & \href{http://data.worldbank.org/indicator/EN.POP.DNST}{WB} \\
+  RuleOfLaw & Rule of law estimate & \href{http://data.worldbank.org/indicator/RL.EST}{WB} \\
+  CLandPR & Average of index for civil liberties and political rights & \href{https://freedomhouse.org/report/freedom-world-2016/methodology}{Freedom House} \\
+%   OutwardO & Trade (\% of GDP)  & \href{http://data.worldbank.org/indicator/NE.TRD.GNFS.ZS}{WB} \\
+  ChinnIto & Chinn-Ito index of financial openness. & \href{http://web.pdx.edu/~ito/Chinn-Ito_website.htm}{Chinn-Ito} \\ 
+  LeftWing & Dummy equal to 1 when left oriented party lead the country. & \href{http://www.nsd.uib.no/macrodataguide/set.html?id=11&sub=1}{DPI} \\
+  ActivRestrict & Activity restrictions. Regulatory restrictions on bank activities and the mixing of banking and commerce. & \href{http://faculty.haas.berkeley.edu/ross_levine/regulation.htm}{Barth et al. (2013)} \\
+  CapitalReg & Capital Regulatory index. & \href{http://faculty.haas.berkeley.edu/ross_levine/regulation.htm}{Barth et al. (2013)} \\
+  DiversIndex & Whether there are explicit, verifiable, quantifiable guidelines for asset diversification and banks are allowed to make loans abroad. & \href{http://faculty.haas.berkeley.edu/ross_levine/regulation.htm}{Barth et al. (2013)} \\
+  EducIndex & Calculated using mean years of schooling and expected years of schooling & \href{http://hdr.undp.org/en/content/education-index}{UN} \\
+  NetInterestMargin & Accounting value of banks' net interest revenue as a share of average interest-bearing assets; a measure of the efficiency of the banking sector. & \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  BankZScore & return on banks' assets plus the ratio of banks' equity and assets, divided by the standard deviation of the return on assets (ROA+equity/assets)/sd(ROA); a measure of stability of the banking sector & \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  Privatecredit & Domestic private credit to the real sector to GDP; a measure of the depth of the banking sector & \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  MarketCap & Value of listed shares to GDP; a measure of the depth of stock markets.& \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  MarketTurn & Stock market value traded to total market capitalization; a measure of the efficiency of stock markets. & \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  BankBranches & Number of bank branches per 100,000 adults & \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  Loan2Deposits & Loan-to-deposit ratio. & \href{http://data.worldbank.org/data-catalog/global-financial-development}{GFDD} \\
+  Redist & Difference between market (pre-tax) and net (after-tax0 Gini index based on distribution of income  (The Standardized World Income Inequality Database). & \href{http://fsolt.org/swiid/}{Solt (2016)} \\	
+  FinLib & Averaged components of Economic Freedom of the World index 3D (freedom to own foreign currency accounts), 4C (black-market exchange rates), 4D (controls of the movement of capital and people), and 5A (credit market regulations). & \href{https://www.fraserinstitute.org/economic-freedom/dataset}{\citet{gwartney2017}} \\
+  \bottomrule
+\end{longtable}
+\end{center}
 
 \end{document}

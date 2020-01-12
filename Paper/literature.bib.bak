@@ -2930,7 +2930,7 @@ This paper develops a meta-analysis of the empirical literature that estimates t
   number      = {2},
 }
 
-@Article{ravallion2014income,
+@Article{Ravallion851,
   author    = {Ravallion, Martin},
   title     = {Income inequality in the developing world},
   journal   = {Science},
@@ -2938,7 +2938,12 @@ This paper develops a meta-analysis of the empirical literature that estimates t
   volume    = {344},
   number    = {6186},
   pages     = {851--855},
+  issn      = {0036-8075},
+  abstract  = {Should income inequality be of concern in developing countries? New data reveal less income inequality in the developing world than 30 years ago. However, this is due to falling inequality between countries. Average inequality within developing countries has been slowly rising, though staying fairly flat since 2000. As a rule, higher rates of growth in average incomes have not put upward pressure on inequality within countries. Growth has generally helped reduce the incidence of absolute poverty, but less so in more unequal countries. High inequality also threatens to stall future progress against poverty by attenuating growth prospects. Perceptions of rising absolute gaps in living standards between the rich and the poor in growing economies are also consistent with the evidence.},
+  doi       = {10.1126/science.1251875},
+  eprint    = {https://science.sciencemag.org/content/344/6186/851.full.pdf},
   publisher = {American Association for the Advancement of Science},
+  url       = {https://science.sciencemag.org/content/344/6186/851},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

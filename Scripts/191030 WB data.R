@@ -72,7 +72,7 @@ wbvars <- c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS","SP.POP.GROW",
 			"SL.EMP.TOTL.SP.NE.ZS","SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD",
 			"NY.GDP.MKTP.KD.ZG","NE.TRD.GNFS.ZS","SP.DYN.LE00.IN",
 			"TX.VAL.MMTL.ZS.UN","TX.VAL.FUEL.ZS.UN","SE.PRM.ENRR",
-			"SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS")
+			"SE.SEC.ENRR","SE.TER.ENRR","SL.UEM.TOTL.ZS","EN.POP.DNST")
 
 # Read first dataset to obtain selected country codes
 wbdata <- data.table(WDI(indicator = wbvars, start = 1980, end = 2017))
@@ -103,11 +103,11 @@ setnames(wbdatasub, c("NY.GDP.TOTL.RT.ZS","NE.CON.GOVT.ZS","NY.GDS.TOTL.ZS",
 				      "SE.XPD.TOTL.GD.ZS","NY.GDP.PCAP.PP.KD","NY.GDP.MKTP.KD.ZG",
 					  "NE.TRD.GNFS.ZS","SP.DYN.LE00.IN","TX.VAL.MMTL.ZS.UN",
 					  "TX.VAL.FUEL.ZS.UN","SE.PRM.ENRR","SE.SEC.ENRR","SE.TER.ENRR",
-					  "SL.UEM.TOTL.ZS"),
+					  "SL.UEM.TOTL.ZS","EN.POP.DNST"),
 					c("NatRes","GovExp","GDSavings","PopGrowth","PopTot","Infl","EducExp","VAI",
 					  "VAA","NetFDIin","NetFDIout","TaxR","NNSavings","RuleofLaw","GFCF",
 					  "EmplRate","PubEducExp","GDPpc","GDPgrowth","TradeOpen","LifeExp","ExpMetalOre",
-					  "ExpFuel","EnrolPri","EnrolSec","EnrolTer","Unemployment"))
+					  "ExpFuel","EnrolPri","EnrolSec","EnrolTer","Unemployment","PopDens"))
 
 # Check
 # names(wbdatasub)
