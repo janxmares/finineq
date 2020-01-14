@@ -13,7 +13,8 @@ data <- data.table(read.csv(file = here('data_hm.csv'), header = T, stringsAsFac
 # View(data)
 
 # drop countries with unavailable data
-data <- data[!(iso3c %in% c("BEN","COM","GIN","LBR","OMN","PSE","STP","SYC","SWZ")),]
+# data <- data[!(iso3c %in% c("BEN","COM","PSE","STP","SYC","SWZ")),]
+data <- data[!(iso3c %in% c("BEN","COM","GIN","LBR","OMN","PSE","STP","SYC","SWZ")),] # excluding also 1 unit observations
 
 # adjust the variables
 data[, c("PopTot","GDPpc") := .(log(PopTot), log(GDPpc))]
@@ -92,7 +93,7 @@ pl1g <- pl1 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -107,11 +108,19 @@ pl2g <- pl2 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
 pl2g
+
+#
+# Grids, GiniNet + Topshares
+#
+
+cairo_ps(file = here("Paper/figures/plots_ineq.eps"), width=10, height=5, family="Arial")
+grid.arrange(pl1g, pl2g, ncol=2)
+dev.off()
 
 #
 # Scatter plots of the variable with highest PIPs
@@ -127,7 +136,7 @@ pl1g <- pl1 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -148,7 +157,7 @@ pl2g <- pl2 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -169,7 +178,7 @@ pl3g <- pl3 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -190,7 +199,7 @@ pl4g <- pl4 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -211,7 +220,7 @@ pl5g <- pl5 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -222,26 +231,26 @@ cairo_ps(file = here("Paper/figures/GovExpGiniNet.eps"), width=9, height=5, fami
 pl5g
 dev.off()
 
-# Mortality
-pl6 <- ggplot(data_try, aes(Mortality, GiniNet)) +
-		      ylab("Gini index - income (after redistribution)") +
-		      xlab('Mortality')
+# # Mortality
+# pl6 <- ggplot(data_try, aes(Mortality, GiniNet)) +
+# 		      ylab("Gini index - income (after redistribution)") +
+# 		      xlab('Mortality')
 		      
-pl6g <- pl6 + geom_point(size=2) +
-		theme_bw() +
-		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
-			  panel.border = element_rect(fill = NA, colour = 'black'),
-    		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
-        scale_colour_manual(values=rgb(colset/255)) + 
-        scale_fill_manual(values=rgb(colset/255))
+# pl6g <- pl6 + geom_point(size=2) +
+# 		theme_bw() +
+# 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
+# 			  panel.border = element_rect(fill = NA, colour = 'black'),
+#     		  legend.position="none") +
+#         stat_smooth(method='lm', se=F) +
+#         scale_colour_manual(values=rgb(colset/255)) + 
+#         scale_fill_manual(values=rgb(colset/255))
 
-pl6g
+# pl6g
 
 # EPS file
-cairo_ps(file = here("Paper/figures/MortGiniNet.eps"), width=9, height=5, family="Helvetica")
-pl6g
-dev.off()
+# cairo_ps(file = here("Paper/figures/MortGiniNet.eps"), width=9, height=5, family="Helvetica")
+# pl6g
+# dev.off()
 
 # GDP
 pl7 <- ggplot(data_try, aes(GDPpc, GiniNet)) +
@@ -377,7 +386,7 @@ pl1g <- pl1 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -392,11 +401,20 @@ pl2g <- pl2 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
 pl2g
+
+#
+# Grids, GiniNet + Topshares
+#
+
+cairo_ps(file = here("Paper/figures/plots_ineq_dm.eps"), width=9, height=9, family="Arial")
+grid.arrange(pl1g, pl2g, ncol=2)
+dev.off()
+
 
 #
 #
@@ -404,12 +422,12 @@ pl2g
 #
 #
 
-library(plm)
-fem <- plm(GiniMarket ~ Top10share, data=data_try, index=c("iso3c", "period"), model="within")
-summary(fem)
+# library(plm)
+# fem <- plm(GiniMarket ~ Top10share, data=data_try, index=c("iso3c", "period"), model="within")
+# summary(fem)
 
-reg <- lm(GiniMarket ~ Top10share - 1, data=data_dm)
-summary(reg)
+# reg <- lm(GiniMarket ~ Top10share - 1, data=data_dm)
+# summary(reg)
 
 #
 #
@@ -418,7 +436,7 @@ summary(reg)
 data_dm <- data_dm[complete.cases(data_dm), ]
 
 # FIE
-pl1 <- ggplot(data_dm, aes(FMD , GiniNet)) +
+pl1 <- ggplot(data_dm, aes(FIE , GiniNet)) +
 		      ylab("Gini index - income (after redistribution)") +
 		      xlab('Financial institutions efficiency')
 		      
@@ -511,7 +529,7 @@ pl5g <- pl5 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -522,26 +540,26 @@ cairo_ps(file = here("Paper/figures/GovExpGiniNet_dm.eps"), width=9, height=5, f
 pl5g
 dev.off()
 
-# Mortality
-pl6 <- ggplot(data_dm, aes(Mortality, GiniNet)) +
-		      ylab("Gini index - income (after redistribution)") +
-		      xlab('Mortality')
+# # Mortality
+# pl6 <- ggplot(data_dm, aes(Mortality, GiniNet)) +
+# 		      ylab("Gini index - income (after redistribution)") +
+# 		      xlab('Mortality')
 		      
-pl6g <- pl6 + geom_point(size=2) +
-		theme_bw() +
-		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
-			  panel.border = element_rect(fill = NA, colour = 'black'),
-    		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
-        scale_colour_manual(values=rgb(colset/255)) + 
-        scale_fill_manual(values=rgb(colset/255))
+# pl6g <- pl6 + geom_point(size=2) +
+# 		theme_bw() +
+# 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
+# 			  panel.border = element_rect(fill = NA, colour = 'black'),
+#     		  legend.position="none") +
+#         # stat_smooth(method='lm', se=F) +
+#         scale_colour_manual(values=rgb(colset/255)) + 
+#         scale_fill_manual(values=rgb(colset/255))
 
-pl6g
+# pl6g
 
-# EPS file
-cairo_ps(file = here("Paper/figures/MortGiniNet_dm.eps"), width=9, height=5, family="Helvetica")
-pl6g
-dev.off()
+# # EPS file
+# cairo_ps(file = here("Paper/figures/MortGiniNet_dm.eps"), width=9, height=5, family="Helvetica")
+# pl6g
+# dev.off()
 
 # GDP
 pl7 <- ggplot(data_dm, aes(GDPpc, GiniNet)) +
@@ -553,7 +571,7 @@ pl7g <- pl7 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -574,7 +592,7 @@ pl8g <- pl8 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -595,7 +613,7 @@ pl9g <- pl9 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -616,7 +634,7 @@ pl10g <- pl10 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 
@@ -637,7 +655,7 @@ pl11g <- pl11 + geom_point(size=2) +
 		theme(plot.margin = unit(c(0.3,0.2,0.3,0.3), "cm"), 
 			  panel.border = element_rect(fill = NA, colour = 'black'),
     		  legend.position="none") +
-        stat_smooth(method='lm', se=F) +
+        # stat_smooth(method='lm', se=F) +
         scale_colour_manual(values=rgb(colset/255)) + 
         scale_fill_manual(values=rgb(colset/255))
 

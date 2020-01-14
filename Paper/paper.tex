@@ -177,6 +177,27 @@ Table \ref{tab:ineq} report the summary statistics and correlations between the 
     \end{tabular}
 \end{table}
 
+
+\begin{table}[ht!]
+  \small
+  \caption{Summary statistics of selected variables}
+  \label{tab:ineq}
+  \centering
+     \begin{tabular}{lrrrr}
+      \toprule
+      Variable & Mean & St. Dev. & Min & Max \\
+      \midrule
+      After-tax Gini index  & 36.62 & & 22.88 & 61.16 \\
+      Top 10\% income share & 0.41 & & 0.24 & 0.71 \\
+      Top 1\% income share & 0.14 & & 0.05 & 0.38 \\
+      FIA & 0.42 & & 0.01 & 1 \\
+      FIE & 0.60 & & 0.11 & 0.81 \\
+      FID & 0.37 & & 0.01 & 1 \\      
+      FMD & 0.33 & & 0.00 & 0.99 \\
+      \bottomrule
+  \end{tabular}
+\end{table}
+
 We obtain the financial development indicators from \ac{gfdd}. The database offers detailed indicators along four dimensions of financial systems and allows to estimate the affect of changes in access, size, efficiency, and stability of financial markets. Furthermore, we can distinguish between banking sector and financial markets in all these dimensions. The data in for access and stability of stock markets remains sparse in the concerned period we must leave them out of analysis. We use the version of financial indicators from \cite{svirydzenka2016introducing}. The authors make use of principal component analysis in order to construct aggregate indicators in each characteristic of financial sector. In summary, we have indicators of financial institutions depth (FID), financial markets depth (FMD), access to financial institutions (FIA), efficiency of financial markets (FME), and institutions (FIE)\footnote{\citet{svirydzenka2016introducing} extrapolate the indicators from top to bottom if the original variables are unavailable, we make sure that that at least one variable is available for the construction of the index and no artificial correlation introduced to the data.}. We report the composition of each indicator in Table \ref{tab:finind}. 
 
 \begin{figure}

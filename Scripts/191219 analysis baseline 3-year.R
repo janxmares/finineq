@@ -10,13 +10,15 @@ library(dilutBMS2)
 library(imputeTS)
 library(here)
 library(dummies)
+library(xtable)
 
 # read data file
 data <- data.table(read.csv(file = here('data_hm.csv'), header = T, stringsAsFactors = F))
 # View(data)
 
 # drop countries with unavailable data
-data <- data[!(iso3c %in% c("BEN","COM","PSE","STP","SYC","SWZ")),]
+# data <- data[!(iso3c %in% c("BEN","COM","PSE","STP","SYC","SWZ")),]
+data <- data[!(iso3c %in% c("BEN","COM","GIN","LBR","OMN","PSE","STP","SYC","SWZ")),] # excluding also 1 unit observations
 
 # adjust the variables
 data[, c("PopTot","GDPpc") := .(log(PopTot), log(GDPpc))]
@@ -61,8 +63,57 @@ data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","E
 
 data_try <- data_try[complete.cases(data_try), ]
 
+#
+#
+#
+#
+# Summary statistics
+#
+#
+#
+#
+
+# Filter the variables for correlations
+sumstats <- data_try[, .(GiniNet,Top10share,Top1share,FIA,FIE,FID,FMD)]
+summary(sumstats)
+
+sd(sumstats$GiniNet)
+sd(sumstats$Top10share)
+sd(sumstats$Top1share)
+sd(sumstats$FIA)
+sd(sumstats$FIE)
+sd(sumstats$FID)
+sd(sumstats$FMD)
+
 # demean the data
 data_dm <- data_try[, lapply(.SD[,2:ncol(.SD)], demean, na.rm = T), by = c("iso3c","country")]
+View(data_dm)
+#
+#
+#
+#
+# Correlations
+#
+#
+#
+#
+
+# Filter the variables for correlations
+data_corr <- data_dm[, .(GiniNet,Top10share,Top1share,FIA,FIE,FID,FMD)]
+
+# compute the correlation
+corr <- cor(data_corr)
+corr <- round(corr,2) # round to 2 decimal places
+corr[upper.tri(corr)] <- "" # remove the upper triangular part of correlation matrix
+
+# print output to latex
+print(xtable(corr))
+
+#
+#
+# Estimates
+#
+#
 
 # check
 # View(data_try)
@@ -207,7 +258,7 @@ save(bma_3y_top10_dilut, file = here("Results/bma_3y_top10_dilut.Rdata"))
 #
 
 # random model prior (accounting for a number of regressors in prior model probability)
-bma_3y_top10_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random", mprior.size = 7,
+bma_3y_top10_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random", mprior.size = 5,
 				          g = "hyper", nmodel=5000, mcmc="bd.int",
                   		  fixed.reg = dummies, user.int = F)
 
@@ -303,7 +354,7 @@ save(bma_3y_top1_dilut, file = here("Results/bma_3y_top1_dilut.Rdata"))
 #
 
 # random model prior (accounting for a number of regressors in prior model probability)
-bma_3y_top1_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random", mprior.size = 7,
+bma_3y_top1_random <- bms(data_dm, iter=5000000, burn=1000000, mprior = "random", mprior.size = 5,
 						  g = "hyper", nmodel=5000, mcmc="bd.int",
                   		  fixed.reg = dummies, user.int = F)
 
