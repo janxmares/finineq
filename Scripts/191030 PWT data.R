@@ -44,8 +44,8 @@ investment_f <- merge(gfcf, capital_detail[,j = list(iso3c = countrycode,year = 
 					  by = c("iso3c","year"))
 
 # Construct the shares of equip and nonequip investment
-investment_f[,EquipI := mach_share*csh_i]
-investment_f[,NonequipI := rest_share*csh_i]
+investment_f[, EquipI := mach_share*csh_i]
+investment_f[, NonequipI := rest_share*csh_i]
 investment_f[, to:= mach_share + rest_share]
 
 # select required columns
