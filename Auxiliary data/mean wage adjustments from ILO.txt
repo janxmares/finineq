@@ -1,0 +1,43 @@
+agr - dropped
+arm - linked, 1993 super stranges
+aut - hopefully comparable
+bulgaria - ratio of obs. in 2008 applied to following years
+bahrain - hopefully comparable
+bih - ratio of obs. in 2006 applied to 2005
+belarus - unreasonable numbers, probably not in USD
+brazil - ratio of 2015 applied to deflate 2016
+che - USD?
+chl - linked by average ratio of overlapping obs.
+chn - linked by average ratio of overlapping obs.
+cze - linked directly average ratio of overlappign obs. ~ 1
+dom - hopefully comparable
+est - hopefully comparable
+fin - linked by applying growth rate in 2012 from FA:1131
+fra - hopefully comparable
+gbr - comaprable?
+gha - comparable
+gtm - linked by average ratio of overlapping obs.
+hun - comparable
+isr - comparable
+ita - comparable
+jpn - comparable
+kaz - comparable
+khm - ratio of overlapping obs. (2012)
+lbr - comparable?
+mkd - ratio of overlapping obs. (2010)
+mlt - ratio of overlapping obs. (2010)
+mne - comparable
+ner - comparable?
+nic - comparable?
+phl - linked using backward growth rates
+pry - comparable?
+rou - comparable?
+sdn - USD?
+slv - comparable
+sgp - linked by average ratio of overlapping obs.
+srb - ratio of overlapping obs. (2014)
+tgo - comparable?
+tza - comparable?
+ury - comparable? 1996
+zaf - linked by average ratio of overlapping obs.
+zwe - comparable?
