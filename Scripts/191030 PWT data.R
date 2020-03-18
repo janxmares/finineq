@@ -6,6 +6,7 @@ library(data.table)
 library(countrycode)
 library(pwt9)
 library(readstata13)
+library(here)
 
 # Set the working directory
 wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
@@ -15,10 +16,10 @@ setwd(wd)
 #
 
 # Load Penn World table 
-pwt <- data.table(read.csv(file="Auxiliary data/pwt91.csv", header=T, stringsAsFactors=F))
+pwt <- data.table(read.csv(file=here("Auxiliary data/pwt91.csv"), header=T, stringsAsFactors=F))
 
 # Data on capital
-capital_detail <- data.table(read.dta13("Auxiliary data/pwt91_capital_detail.dta"))
+capital_detail <- data.table(read.dta13(here("Auxiliary data/pwt91_capital_detail.dta")))
 
 # Restrict to only 1980+
 capital_detail <- capital_detail[year %in% c(1980:2017),]
@@ -30,8 +31,10 @@ capital_detail[,Ir_TraEq:=Ic_TraEq/Ip_TraEq]
 capital_detail[,Ir_Other:=Ic_Other/Ip_Other]
 
 # Construct the equipment and non-equipment shares within the fixed capital formation
-capital_detail[,mach_share:=Ir_Mach/(Ir_Struc+Ir_TraEq+Ir_Other+Ir_Mach)]
-capital_detail[,rest_share:=(Ir_Struc+Ir_TraEq+Ir_Other)/(Ir_Struc+Ir_TraEq+Ir_Other+Ir_Mach)]
+# capital_detail[,mach_share:=Ir_Mach/(Ir_Struc+Ir_TraEq+Ir_Other+Ir_Mach)]
+# capital_detail[,mach_share:=Ir_Mach/(Ir_Struc+Ir_TraEq+Ir_Other+Ir_Mach)]
+capital_detail[,mach_share:=(Ir_Mach+Ir_Struc+Ir_TraEq)/(Ir_Mach+Ir_Struc+Ir_TraEq+Ir_Other)]
+capital_detail[,rest_share:=(Ir_Other)/(Ir_Mach+Ir_Struc+Ir_TraEq+Ir_Other)]
 
 #
 #
@@ -52,4 +55,4 @@ investment_f[, to:= mach_share + rest_share]
 investment_f <- investment_f[, j = .(iso3c, year, EquipI, NonequipI)]
 
 # write into csv
-write.csv(investment_f, file = "Auxiliary data/to merge/investment shares detail.csv", row.names = F)
+write.csv(investment_f, file = here("Auxiliary data/to merge/investment shares detail.csv"), row.names = F)
