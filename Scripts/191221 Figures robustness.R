@@ -37,6 +37,18 @@ legend("topright", legend=c("Uniform", "Dilution","Random"), pch=c(1:3), bty="n"
        title = expression(bold("Model priors")), title.adj = 0.1, col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
 dev.off()
 
+# write in file, presentation
+cairo_ps(file = here("Paper/figures/model_priors_comparison_gini_pres.eps"), width=9, height=6, family="Arial")
+par(mar=c(6,4,0,0), bg='#f9f9f9')
+plotComp(bma_3y_gini_baseline, bma_3y_gini_dilut, bma_3y_gini_random,
+         lwd=1, varNr = NULL, comp = "PIP", exact = T, include.legend = F,
+         add.grid = F, do.par = T, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+legend("topright", legend=c("Uniform", "Dilution","Random"), pch=c(1:3), bty="n", inset=c(0.02,0.02),
+       title = expression(bold("Model priors")), title.adj = 0.1, col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+dev.off()
+
 # plot comparison - Top 10 share
 load(here("Results/bma_3y_top10_dilut.Rdata"))
 load(here("Results/bma_3y_top10_baseline.Rdata"))
@@ -60,6 +72,21 @@ legend("topright", legend=c("Uniform", "Dilution","Random"), pch=c(1:3), bty="n"
 
 dev.off()
 
+# write in file, presentation
+cairo_ps(file = here("Paper/figures/model_priors_comparison_top10_pres.eps"), width=9, height=6, family="Arial")
+par(mar=c(6,4,0,0), bg='#f9f9f9')
+plotComp(bma_3y_top10_baseline, bma_3y_top10_dilut, bma_3y_top10_random,
+         lwd=1, varNr = NULL, comp = "PIP", exact = T, include.legend = F,
+         add.grid = F, do.par = T, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+legend("topright", legend=c("Uniform", "Dilution","Random"), pch=c(1:3), bty="n", inset=c(0.02,0.02),
+       title = expression(bold("Model priors")), title.adj = 0.1, col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+dev.off()
+
+#
+#
 
 # Top 1 share
 load(here("Results/bma_3y_top1_dilut.Rdata"))
@@ -77,6 +104,19 @@ par(mar=c(6,4,0,0))
 plotComp(bma_3y_top1_baseline, bma_3y_top1_dilut, bma_3y_top1_random,
          lwd=1, varNr = NULL, comp = "PIP", exact = T, include.legend = F,
          add.grid = F, do.par = T, cex.axis=0.8, cex.xaxis=0.8,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+legend("topright", legend=c("Uniform", "Dilution","Random"), pch=c(1:3), bty="n", inset=c(0.02,0.02),
+       title = expression(bold("Model priors")), title.adj = 0.1, col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+dev.off()
+
+# write in file, presentation
+cairo_ps(file = here("Paper/figures/model_priors_comparison_top1_pres.eps"), width=9, height=6, family="Arial")
+par(mar=c(6,4,0,0), bg='#f9f9f9')
+plotComp(bma_3y_top1_baseline, bma_3y_top1_dilut, bma_3y_top1_random,
+         lwd=1, varNr = NULL, comp = "PIP", exact = T, include.legend = F,
+         add.grid = F, do.par = T, cex.axis=1, cex.xaxis=1,
          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
 
 legend("topright", legend=c("Uniform", "Dilution","Random"), pch=c(1:3), bty="n", inset=c(0.02,0.02),
@@ -128,6 +168,19 @@ legend("topright", legend=c("Top 10% share","Top 1% share"), pch=c(1:3), bty="n"
 
 dev.off()
 
+# write into file, presentation
+cairo_ps(file = here("Paper/figures/topsh_comparison_all_pres.eps"), width=9, height=6, family="Arial")
+par(mar=c(6,4,0,0), bg='#f9f9f9')
+plotComp(bma_3y_top10_baseline, bma_3y_top1_baseline,
+                         lwd=1, varNr = NULL, comp = "PIP", exact = T, include.legend = F,
+                         add.grid = F, do.par = T, cex.axis=1, cex.xaxis=1,
+                         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+legend("topright", legend=c("Top 10% share","Top 1% share"), pch=c(1:3), bty="n", inset=c(0.02,0.02),
+       title = expression(bold("Models")), title.adj = 0.1, col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+dev.off()
+
 #
 #
 
@@ -143,16 +196,30 @@ legend("bottom", legend = c("Gini index","Top 10% share","Top 1% share"), pch=c(
                           col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
 #
 #
+
 # Write into file
 cairo_ps(file = here("Paper/figures/comp_baseline_pip_sel.eps"), width=9, height=9, family="Arial")
 par(mar=c(10,4,0,0))
 plotComp(bma_3y_gini_baseline, bma_3y_top10_baseline, bma_3y_top1_baseline,
          lwd=1, varNr = varplot_baseline, comp = "PIP", exact = T, include.legend = F,
-         add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+         add.grid = F, do.par = F, cex.axis=0.8, cex.xaxis=1,
          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
 
 legend("bottom", legend = c("Gini index","Top 10% share","Top 1% share"), pch=c(1:3), bty="n", inset=c(0,-0.25),
                           title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
+                          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+dev.off()
+
+# Write into file, presentation
+cairo_ps(file = here("Paper/figures/comp_baseline_pip_sel_pres.eps"), width=9, height=6, family="Arial")
+par(mar=c(6,4,0,0), bg='#f9f9f9')
+plotComp(bma_3y_gini_baseline, bma_3y_top10_baseline, bma_3y_top1_baseline,
+         lwd=1, varNr = varplot_baseline, comp = "PIP", exact = T, include.legend = F,
+         add.grid = F, do.par = T, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
+
+legend("bottom", legend = c("Gini index","Top 10% share","Top 1% share"), pch=c(1:3), bty="n", inset=c(0,-0.35),
+                          title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz = T,
                           col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
 dev.off()
 
@@ -173,3 +240,4 @@ legend(x=8.5,y=0.95, legend=c("Gini index","Top 10% share","Top 1% share"), pch=
 
 #
 #
+

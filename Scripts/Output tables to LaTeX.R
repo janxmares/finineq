@@ -21,6 +21,19 @@ load(file = here("Results/bma_3y_gini_baseline.Rdata"))
 load(file = here("Results/bma_3y_top10_baseline.Rdata"))
 load(file = here("Results/bma_3y_top1_baseline.Rdata"))
 
+# pre-tax gini coefficient 
+load(file = here("Results/bma_3y_ginimarket_baseline.Rdata"))
+
+# 5y averages
+load(file = here("Results/bma_5y_gini_baseline.Rdata"))
+load('Results/bma_5y_top10_baseline.Rdata')
+load('Results/bma_5y_top1_baseline.Rdata')
+
+# Lags
+load(file = here("Results/bma_3y_gini_baseline_lag.Rdata"))
+load('Results/bma_3y_top10_baseline_lag.Rdata')
+load('Results/bma_3y_top1_baseline_lag.Rdata')
+
 #
 #
 
@@ -53,7 +66,7 @@ explvarnames <- c("Natural resources rents","Government expenditures","Gross dom
 
 # Bind short and long variables names together
 varnames <- cbind(explvarshort, explvarnames)  
-
+length(explvarnames)
 # Results hyper prior
 # results_all <- coef(bma_1y_gini_baseline, exact=T, std.coefs = T)
 # results_all <- coef(bma_5y_gini_baseline, exact=T, std.coefs = T)
@@ -66,7 +79,10 @@ varnames <- cbind(explvarshort, explvarnames)
 # 3y averages (baseline) 
 # results_all <- coef(bma_3y_gini_baseline, exact=T, std.coefs = T)
 # results_all <- coef(bma_3y_top10_baseline, exact=T, std.coefs = T)
-results_all <- coef(bma_3y_top1_baseline, exact=T, std.coefs = T)
+# results_all <- coef(bma_3y_top1_baseline, exact=T, std.coefs = T)
+
+# 3y averages, pre-tax Gini
+results_all <- coef(bma_3y_top1_baseline_lag, exact=T, std.coefs = T)
 
 # List of variables sorted by PIP 
 varlist <- data.frame(explvarshort=row.names(results_all))

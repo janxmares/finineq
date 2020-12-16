@@ -39,10 +39,10 @@ data_f[year %in% c(2009:2011), period := 4]
 data_f[year %in% c(2012:2014), period := 5]
 
 # average observations by period and country
-data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
+data_f <- data_f[, lapply(.SD, function(x) {mean(as.numeric(x), na.rm = T)}), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
-data_f <- data_f[!is.nan(GiniNet),]
+data_f <- data_f[!is.nan(GiniMarket),]
 
 data_try <- data_f[, c("NetFDIout","TaxR","NNSavings","EmplRate","PubEducExp","EnrolPri", # unavailable for a lot of years
 		   "EnrolSec","EnrolTer","wage.mintomean.OECD","wage.mintomedian.OECD",  # unavailable for a lot of years
@@ -83,12 +83,12 @@ data_dm[, c("period","period_1","WarYears","RevCoups","Top1share","Top10share") 
 dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
-bma_3y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
+bma_3y_pretaxgini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
                     nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
-coef(bma_3y_gini_baseline, exact = T, std.coefs = T)
-summary(bma_3y_gini_baseline)
+coef(bma_3y_pretaxgini_baseline, exact = T, std.coefs = T)
+summary(bma_3y_pretaxgini_baseline)
 
 # save the results into file
-save(bma_3y_gini_baseline, file = here("Results/bma_3y_ginimarket_baseline.Rdata"))
+save(bma_3y_pretaxgini_baseline, file = here("Results/bma_3y_ginimarket_baseline.Rdata"))

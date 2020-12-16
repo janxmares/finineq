@@ -11,6 +11,21 @@ library(imputeTS)
 library(here)
 library(dummies)
 library(xtable)
+library(rlang)
+library(dplyr)
+
+# SD function
+
+xtsum <- function(data, varname, unit) {
+  varname <- enquo(varname)
+  loc.unit <- enquo(unit)
+ores <- data %>% summarise(ovr.mean=mean(!! varname, na.rm=TRUE), ovr.sd=sd(!! varname, na.rm=TRUE), ovr.min = min(!! varname, na.rm=TRUE), ovr.max=max(!! varname, na.rm=TRUE), ovr.N=sum(as.numeric((!is.na(!! varname)))))
+bmeans <- data %>% group_by(!! loc.unit) %>% summarise(meanx=mean(!! varname, na.rm=T), t.count=sum(as.numeric(!is.na(!! varname))))
+bres <- bmeans %>% ungroup() %>% summarise(between.sd = sd(meanx, na.rm=TRUE), between.min = min(meanx, na.rm=TRUE), between.max=max(meanx, na.rm=TRUE), Units=sum(as.numeric(!is.na(t.count))), t.bar=mean(t.count, na.rm=TRUE))
+wdat <- data %>% group_by(!! loc.unit) %>% mutate(W.x = scale(!! varname, scale=FALSE))
+wres <- wdat %>% ungroup() %>% summarise(within.sd=sd(W.x, na.rm=TRUE), within.min=min(W.x, na.rm=TRUE), within.max=max(W.x, na.rm=TRUE))
+return(list(ores=ores,bres=bres,wres=wres))
+}
 
 # read data file
 data <- data.table(read.csv(file = here('data_hm.csv'), header = T, stringsAsFactors = F))
@@ -41,7 +56,7 @@ data_f[year %in% c(2009:2011), period := 4]
 data_f[year %in% c(2012:2014), period := 5]
 
 # average observations by period and country
-data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
+data_f <- data_f[, lapply(.SD, function(x){mean(as.numeric(x), na.rm = T)}), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
 data_f <- data_f[!is.nan(GiniNet),]
@@ -65,17 +80,20 @@ data_try <- data_try[complete.cases(data_try), ]
 
 #
 #
-#
-#
 # Summary statistics
-#
-#
 #
 #
 
 # Filter the variables for correlations
 sumstats <- data_try[, .(GiniNet,Top10share,Top1share,FIA,FIE,FID,FMD)]
 summary(sumstats)
+nrow(data_try)
+
+View(data_try)
+sds_FIA <- xtsum(data_try, FIA, iso3c)
+sds_FID <- xtsum(data_try, FID, iso3c)
+sds_FIE <- xtsum(data_try, FIE, iso3c)
+sds_FMD <- xtsum(data_try, FMD, iso3c)
 
 sd(sumstats$GiniNet)
 sd(sumstats$Top10share)
@@ -87,7 +105,8 @@ sd(sumstats$FMD)
 
 # demean the data
 data_dm <- data_try[, lapply(.SD[,2:ncol(.SD)], demean, na.rm = T), by = c("iso3c","country")]
-View(data_dm)
+# View(data_dm)
+
 #
 #
 #
@@ -135,7 +154,7 @@ dummies <- colnames(dum)[2:(ncol(dum))]
 
 # run BMA
 bma_3y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "uniform", g = "hyper",
-                    nmodel=5000, mcmc="bd.int",
+				  	 nmodel=5000, mcmc="bd.int",
                     fixed.reg = dummies, user.int = F)
 
 coef(bma_3y_gini_baseline, exact = T, std.coefs = T)

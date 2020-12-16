@@ -63,8 +63,31 @@ setcolorder(data_try, c("GiniNet", names(data_try[,names(data_try)!="GiniNet"]))
 # drop redundant columns, consistency with the panel estimation
 data_try[, c("WarYears","RevCoups","Top1share","Top10share") := NULL]
 
+#
+#
+
+# Initial analysis
+
+#
+#
+
+# Within and between standard deviation
+sd(data_try$FIA)
+sd(data_try$FIE)
+sd(data_try$FID)
+sd(data_try$FMD)
+
+#
+#
+
+# BMA estimate
+
+#
+#
+
+
 # run BMA
-bma_gini_BE <- bms(data_try, iter=500000, burn=100000, mprior = "uniform", g = "hyper",
+bma_gini_BE <- bms(data_try, iter=3000000, burn=1000000, mprior = "uniform", g = "hyper",
                     nmodel=5000, mcmc="bd.int", user.int = F)
 
 coef(bma_gini_BE, exact = T, std.coefs = T)
@@ -77,7 +100,7 @@ save(bma_gini_BE, file = here("Results/bma_gini_BE.Rdata"))
 #
 
 # dilution model prior (accounting for correlation between regressors)
-bma_gini_BE_dilut <- dilutBMS2::bms(data_try, iter=5000000, burn=1000000, mprior = "dilut",
+bma_gini_BE_dilut <- dilutBMS2::bms(data_try, iter=3000000, burn=1000000, mprior = "dilut",
 						  g = "hyper", nmodel=5000, mcmc="bd.int", user.int = F)
 
 coef(bma_gini_BE_dilut, exact = T, std.coefs = T)

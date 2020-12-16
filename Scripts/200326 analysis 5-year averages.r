@@ -10,8 +10,7 @@ library(here)
 library(dummies)
 
 # # Set the working directory
-# wd <- c("c:/Users/JM/Documents/GitHub/finineq/")
-# setwd(wd)
+library(here)
 
 # read data file
 data <- data.table(read.csv(file = here('data_hm.csv'), header = T, stringsAsFactors = F))
@@ -41,7 +40,7 @@ data_f[year %in% c(2005:2009), period := 2]
 data_f[year %in% c(2010:2014), period := 3] 
 
 # average observations by period and country
-data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
+data_f <- data_f[, lapply(.SD, function(x) {mean(as.numeric(x), na.rm = T)}), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
 data_f <- data_f[!is.nan(GiniNet),]
@@ -93,10 +92,11 @@ bma_5y_gini_baseline <- bms(data_dm, iter=5000000, burn=1000000, mprior = "unifo
                     fixed.reg = dummies, user.int = F)
 
 coef(bma_5y_gini_baseline, exact = T, std.coefs = T)
-summary(bma_5y_gini_baseline)
+summary(bma_5ygini_baseline)
 
 # save the results into file
 save(bma_5y_gini_baseline, file = here("Results/bma_5y_gini_baseline.Rdata"))
+load('Results/bma_5y_gini_baseline.Rdata')
 
 #
 #
@@ -142,7 +142,7 @@ data_f[year %in% c(2005:2009), period := 2]
 data_f[year %in% c(2010:2014), period := 3] 
 
 # average observations by period and country
-data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
+data_f <- data_f[, lapply(.SD, function(x) {mean(as.numeric(x), na.rm = T)}), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
 data_f <- data_f[!is.nan(Top10share),]
@@ -236,7 +236,7 @@ data_f[year %in% c(2005:2009), period := 2]
 data_f[year %in% c(2010:2014), period := 3] 
 
 # average observations by period and country
-data_f <- data_f[, lapply(.SD, mean(as.numeric(x)), na.rm = T), by = c("iso3c","country","period")]
+data_f <- data_f[, lapply(.SD, function(x) {mean(as.numeric(x), na.rm = T)}), by = c("iso3c","country","period")]
 data_f[, c('year') := NULL]
 
 data_f <- data_f[!is.nan(Top1share),]
@@ -287,6 +287,7 @@ summary(bma_5y_top1_baseline)
 
 # save the results into file
 save(bma_5y_top1_baseline, file = here("Results/bma_5y_top1_baseline.Rdata"))
+load("Results/bma_5y_top1_baseline.Rdata")
 
 #
 #
@@ -324,28 +325,95 @@ save(bma_5y_top1_random, file = here("Results/bma_5y_top1_random.Rdata"))
 
 # load the baseline 3y results
 load(here("Results/bma_3y_gini_baseline.Rdata"))
+load(here("Results/bma_3y_top10_baseline.Rdata"))
+load(here("Results/bma_3y_top1_baseline.Rdata"))
 
-# Comparison with 3y averages
-par(mar=c(10,4,0,0))
-plotComp(bma_5y_gini_baseline, bma_3y_gini_baseline,
-		 lwd=1, comp = "PIP", exact = T, include.legend = F,
-         add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+# plot variable setup
+comp_vars_gini <- row.names(coef(bma_3y_gini_baseline, exact = T))
+comp_vars_gini <- comp_vars_gini[!(comp_vars_gini %in% c('period_4','period_5'))]
+comp_vars_top10 <- row.names(coef(bma_3y_top10_baseline, exact = T))
+comp_vars_top10 <- comp_vars_top10[!(comp_vars_top10 %in% c('period_4','period_5'))]
+comp_vars_top1 <- row.names(coef(bma_3y_top1_baseline, exact = T))
+comp_vars_top1 <- comp_vars_top1[!(comp_vars_top1 %in% c('period_4','period_5'))]
+
+# Comparison with 3y averages, gini
+par(mar=c(12,4,0,0))
+plotComp(bma_3y_gini_baseline, bma_5y_gini_baseline,
+		 varNr = comp_vars_gini, lwd=1, comp = "PIP", exact = T, 
+		 include.legend = F, add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
 
-legend("bottom", legend = c("5-year baseline","3-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.25),
+legend("bottom", legend = c("3-year baseline","5-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.55),
                           title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
                           col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
 
+#
+#
 
-# # Write into file
-# cairo_ps(file = here("Paper/figures/comp_baseline_pip_sel.eps"), width=9, height=9, family="Arial")
-# par(mar=c(10,4,0,0))
-# plotComp(bma_3y_gini_baseline, bma_3y_top10_baseline, bma_3y_top1_baseline,
-#          lwd=1, varNr = varplot_baseline, comp = "PIP", exact = T, include.legend = F,
-#          add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
-#          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
+# Comparison with 3y averages, top 10 share
+par(mar=c(12,4,0,0))
+plotComp(bma_3y_top10_baseline, bma_5y_top10_baseline,
+		 varNr = comp_vars_top10, lwd=1, comp = "PIP", exact = T, 
+		 include.legend = F, add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
 
-# legend("bottom", legend = c("Gini index","Top 10% share","Top 1% share"), pch=c(1:3), bty="n", inset=c(0,-0.25),
-#                           title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
-#                           col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
-# dev.off()
+legend("bottom", legend = c("3-year baseline","5-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.6),
+                          title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
+                          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+#
+#
+
+# Comparison with 3y averages, top 1 share
+par(mar=c(11,4,0,0))
+plotComp(bma_3y_top1_baseline, bma_5y_top1_baseline,
+		 varNr = comp_vars_top1, lwd=1, comp = "PIP", exact = T,
+		 include.legend = F, add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
+
+legend("bottom", legend = c("3-year baseline","5-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.55),
+                          title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
+                          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+
+#
+#
+
+# # Write into file, gini
+cairo_ps(file = here("figures/comp_3y5y_gini.eps"), width=8, height=6, family="Arial")
+# Comparison with 3y averages, gini
+par(mar=c(12,4,0,0))
+plotComp(bma_3y_gini_baseline, bma_5y_gini_baseline,
+		 varNr = comp_vars_gini, lwd=1, comp = "PIP", exact = T, 
+		 include.legend = F, add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
+
+legend("bottom", legend = c("3-year baseline","5-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.55),
+                          title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
+                          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+dev.off()
+
+# # Write into file, top 10 share
+cairo_ps(file = here("figures/comp_3y5y_top10.eps"), width=8, height=6, family="Arial")
+par(mar=c(12,4,0,0))
+plotComp(bma_3y_top10_baseline, bma_5y_top10_baseline,
+		 varNr = comp_vars_top10, lwd=1, comp = "PIP", exact = T, 
+		 include.legend = F, add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
+
+legend("bottom", legend = c("3-year baseline","5-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.6),
+                          title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
+                          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+dev.off()
+
+# # Write into file, top 1 share
+cairo_ps(file = here("figures/comp_3y5y_top1.eps"), width=8, height=6, family="Arial")
+par(mar=c(11,4,0,0))
+plotComp(bma_3y_top1_baseline, bma_5y_top1_baseline,
+		 varNr = comp_vars_top1, lwd=1, comp = "PIP", exact = T,
+		 include.legend = F, add.grid = F, do.par = F, cex.axis=1, cex.xaxis=1,
+         col=c(rgb(0.03, 0.15, 0.4),rgb(0.753, 0, 0),rgb(0, 0, 0)))
+
+legend("bottom", legend = c("3-year baseline","5-year baseline"), pch=c(1:2), bty="n", inset=c(0,-0.55),
+                          title = expression(bold("Models")), title.adj = 0.5, xpd = T, horiz=T,
+                          col=c(rgb(0.03, 0.15, 0.4),rgb(0.753,0,0),rgb(0, 0, 0)))
+dev.off()
